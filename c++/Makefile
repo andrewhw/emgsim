@@ -64,6 +64,7 @@ OBJS		= \
 		src/tlUnicodeConvert.o
 
 $(LIBNAME) : $(OBJS)
+	- if [ ! -d $(LIBDIR) ] ; then mkdir $(LIBDIR) ; fi
 	- rm -f $(LIBNAME)
 	ar cr $(LIBNAME) $(OBJS)
 	$(RANLIB) $(LIBNAME)

@@ -1,0 +1,128 @@
+<html><head><title>NeedleInfo Documentation</title></head>
+<body><h1>
+<a name="topofdoc"><img src=coclogo.gif>NeedleInfo</a></h1>
+<dl>
+<dd>
+    This class defines the physical positioning of the
+    needle.
+</dl>
+<hr><p></p>
+<p><strong>[ 
+<a href="SimulationLibrary.html">SimulationLibrary</a> | 
+<a href="NeedleInfo.h">Source</a> | 
+<a href="/keyweb.html">Keywords</a> | 
+<a href="#aag">Summary</a> | <a href="#parents">Ancestors</a> | <a href="#flat">All Members</a> | <a href="#children">Descendants</a>  ]</strong><p>
+<h2><a name="quickind">Quick Index</a></h2>
+<dl>
+</dl>
+<a name="aag"><hr><p></p></a><h2>Class Summary</h2>
+class NeedleInfo
+
+<br>{
+<br><i><b>public</b></i>:
+<dl>
+<dd><a href="NeedleInfo.html#NeedleInfo(_float_xTipPosition,_float_yTipPosition,_float_zTipPosition,_float_lengthInMM,_float_slope_)$"><font color=green>NeedleInfo</font></a>( float xTipPosition, float yTipPosition, float zTipPosition, float lengthInMM, float slope );
+<dd>~<a href="NeedleInfo.html#~NeedleInfo()$"><font color=green>NeedleInfo</font></a>();
+<dd>float <a href="NeedleInfo.html#float_getXTipInMM()_const$"><font color=green>getXTipInMM</font></a>() const;
+<dd>float <a href="NeedleInfo.html#float_getYTipInMM()_const$"><font color=green>getYTipInMM</font></a>() const;
+<dd>float <a href="NeedleInfo.html#float_getXCannulaTerminusInMM()_const$"><font color=green>getXCannulaTerminusInMM</font></a>() const;
+<dd>float <a href="NeedleInfo.html#float_getYCannulaTerminusInMM()_const$"><font color=green>getYCannulaTerminusInMM</font></a>() const;
+<dd>float <a href="NeedleInfo.html#float_getZ()_const$"><font color=green>getZ</font></a>() const;
+<dd>float <a href="NeedleInfo.html#float_getSlope()_const$"><font color=green>getSlope</font></a>() const;
+<dd>float <a href="NeedleInfo.html#float_getCannulaLength()_const$"><font color=green>getCannulaLength</font></a>() const;
+</dl>
+<i><b>protected</b></i>:
+<dl>
+</dl>
+}; // NeedleInfo <p>
+<p>Back to the <a href="#topofdoc">top</a> of  <i>NeedleInfo</i><p>
+<a name="NeedleInfo(_float_xTipPosition,_float_yTipPosition,_float_zTipPosition,_float_lengthInMM,_float_slope_)$"><hr><p></p><h3>NeedleInfo( float xTipPosition, float yTipPosition, float zTipPosition, float lengthInMM, float slope );</h3></a>
+           create a needle tip at a base position
+<p><pre>
+        <a href="#NeedleInfo(_float_xTipPosition,_float_yTipPosition,_float_zTipPosition,_float_lengthInMM,_float_slope_)$">NeedleInfo</a>(
+                float xTipPosition,
+                float yTipPosition,
+                float zTipPosition,
+                float lengthInMM,
+                float slope = DEFAULT_CANNULA_SLOPE
+            );
+</pre>
+<br><p>Back to the <a href="#topofdoc">top</a> of  <i> NeedleInfo </i> <p>
+<a name="~NeedleInfo()$"><hr><p></p><h3>~NeedleInfo();</h3></a>
+           Destructor
+<p><pre>
+        ~NeedleInfo();
+</pre>
+<br><p>Back to the <a href="#topofdoc">top</a> of  <i> NeedleInfo </i> <p>
+<a name="float_getXTipInMM()_const$"><hr><p></p><h3>float getXTipInMM() const;</h3></a>
+           return the X position of the needle tip
+<p><pre>
+        float <a href="#float_getXTipInMM()_const$">getXTipInMM</a>() const;
+</pre>
+<br><p>Back to the <a href="#topofdoc">top</a> of  <i> NeedleInfo </i> <p>
+<a name="float_getYTipInMM()_const$"><hr><p></p><h3>float getYTipInMM() const;</h3></a>
+           return the Y position of the needle tip
+<p><pre>
+        float <a href="#float_getYTipInMM()_const$">getYTipInMM</a>() const;
+</pre>
+<br><p>Back to the <a href="#topofdoc">top</a> of  <i> NeedleInfo </i> <p>
+<a name="float_getXCannulaTerminusInMM()_const$"><hr><p></p><h3>float getXCannulaTerminusInMM() const;</h3></a>
+           return the X position of the
+           end of the (modelled) cannula
+<p><pre>
+        float <a href="#float_getXCannulaTerminusInMM()_const$">getXCannulaTerminusInMM</a>() const;
+</pre>
+<br><p>Back to the <a href="#topofdoc">top</a> of  <i> NeedleInfo </i> <p>
+<a name="float_getYCannulaTerminusInMM()_const$"><hr><p></p><h3>float getYCannulaTerminusInMM() const;</h3></a>
+           return the X position of the
+           end of the (modelled) cannula
+<p><pre>
+        float <a href="#float_getYCannulaTerminusInMM()_const$">getYCannulaTerminusInMM</a>() const;
+</pre>
+<br><p>Back to the <a href="#topofdoc">top</a> of  <i> NeedleInfo </i> <p>
+<a name="float_getZ()_const$"><hr><p></p><h3>float getZ() const;</h3></a>
+           return the Z position of the needle
+           (the entire shaft has the same Z position)
+<p><pre>
+        float <a href="#float_getZ()_const$">getZ</a>() const;
+</pre>
+<br><p>Back to the <a href="#topofdoc">top</a> of  <i> NeedleInfo </i> <p>
+<a name="float_getSlope()_const$"><hr><p></p><h3>float getSlope() const;</h3></a>
+           return the slope of the cannula
+<p><pre>
+        float <a href="#float_getSlope()_const$">getSlope</a>() const;
+</pre>
+<br><p>Back to the <a href="#topofdoc">top</a> of  <i> NeedleInfo </i> <p>
+<a name="float_getCannulaLength()_const$"><hr><p></p><h3>float getCannulaLength() const;</h3></a>
+           return the length of the cannula
+<p><pre>
+        float <a href="#float_getCannulaLength()_const$">getCannulaLength</a>() const;
+</pre>
+<br><p>Back to the <a href="#topofdoc">top</a> of  <i> NeedleInfo </i> <p>
+<a name="flat"><hr><p></p></a>
+<h2>All Members</h2>
+<dl>
+<dt><strong>public:</strong>
+<dd>float <a href="NeedleInfo.html#float_getXTipInMM()_const$"><font color=green>getXTipInMM</font></a>() const;
+<dd>float <a href="NeedleInfo.html#float_getYTipInMM()_const$"><font color=green>getYTipInMM</font></a>() const;
+<dd>float <a href="NeedleInfo.html#float_getXCannulaTerminusInMM()_const$"><font color=green>getXCannulaTerminusInMM</font></a>() const;
+<dd>float <a href="NeedleInfo.html#float_getYCannulaTerminusInMM()_const$"><font color=green>getYCannulaTerminusInMM</font></a>() const;
+<dd>float <a href="NeedleInfo.html#float_getZ()_const$"><font color=green>getZ</font></a>() const;
+<dd>float <a href="NeedleInfo.html#float_getSlope()_const$"><font color=green>getSlope</font></a>() const;
+<dd>float <a href="NeedleInfo.html#float_getCannulaLength()_const$"><font color=green>getCannulaLength</font></a>() const;
+<dt><strong>protected:</strong>
+</dl>
+<p>Back to the <a href="#topofdoc">top</a> of  NeedleInfo<p>
+<a name="parents"><hr><p></p></a>
+<h2>Ancestors</h2>
+Class does not inherit from any other class.<p>
+<p>Back to the <a href="#topofdoc">top</a> of  NeedleInfo<p>
+<a name="children"><hr><p></p></a>
+<h2>Descendants</h2>
+Class is not inherited by any others.<p>
+<p>Back to the <a href="#topofdoc">top</a> of  NeedleInfo<p>
+<hr><p></p>
+Generated from source by the <i><a href="http://www.stratasys.com/software/cocoon/index.htm">Cocoon</a></i> utilities on Tue Jul 30 17:58:07 2002
+.<p>
+<address>Report <a href="mailto:jkotula@vitalimages.com">problems</a> to jkotula@vitalimages.com</address>
+</body></html>

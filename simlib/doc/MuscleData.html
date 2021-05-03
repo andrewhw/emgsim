@@ -1,0 +1,172 @@
+<html><head><title>MuscleData Documentation</title></head>
+<body><h1>
+<a name="topofdoc"><img src=coclogo.gif>MuscleData</a></h1>
+<dl>
+<dd>
+    This class holds the physical definition of the
+    current muscle.
+
+    See also <a href="MotorUnit.html" target=_top>MotorUnit</a> and <a href="MuscleFibre.html" target=_top>MuscleFibre</a>.
+</dl>
+<hr><p></p>
+<p><strong>[ 
+<a href="SimulationLibrary.html">SimulationLibrary</a> | 
+<a href="MuscleData.h">Source</a> | 
+<a href="/keyweb.html">Keywords</a> | 
+<a href="#aag">Summary</a> | <a href="#parents">Ancestors</a> | <a href="#flat">All Members</a> | <a href="#children">Descendants</a>  ]</strong><p>
+<h2><a name="quickind">Quick Index</a></h2>
+<dl>
+</dl>
+<a name="aag"><hr><p></p></a><h2>Class Summary</h2>
+class MuscleData
+
+<br>{
+<br><i><b>public</b></i>:
+<dl>
+<dd><a href="MuscleData.html#MuscleData()$"><font color=green>MuscleData</font></a>();
+<dd>~<a href="MuscleData.html#~MuscleData()$"><font color=green>MuscleData</font></a>();
+<dd>int <a href="MuscleData.html#int_getXDetect()_const$"><font color=green>getXDetect</font></a>() const;
+<dd>int <a href="MuscleData.html#int_getYDetect()_const$"><font color=green>getYDetect</font></a>() const;
+<dd>int <a href="MuscleData.html#int_getNumMotorUnits()_const$"><font color=green>getNumMotorUnits</font></a>() const;
+<dd>int <a href="MuscleData.html#int_getNumMotorUnitsInDetectionArea()_const$"><font color=green>getNumMotorUnitsInDetectionArea</font></a>() const;
+<dd>float <a href="MuscleData.html#float_getMuscleDiameter()_const$"><font color=green>getMuscleDiameter</font></a>() const;
+<dd>float <a href="MuscleData.html#float_getMaxMotorUnitDiameter()_const$"><font color=green>getMaxMotorUnitDiameter</font></a>() const;
+<dd>float <a href="MuscleData.html#float_getMinMotorUnitDiameter()_const$"><font color=green>getMinMotorUnitDiameter</font></a>() const;
+<dd><a href="MotorUnit.html" target=_top>MotorUnit</a> *<a href="MuscleData.html#MotorUnit_*getMotorUnitInDetectionArea(int_index)_const$"><font color=green>getMotorUnitInDetectionArea</font></a>(int index) const;
+<dd><a href="NeedleInfo.html" target=_top>NeedleInfo</a> *<a href="MuscleData.html#NeedleInfo_*getNeedleInfo()_const$"><font color=green>getNeedleInfo</font></a>() const;
+<dd>int <a href="MuscleData.html#int_writeMFInfo(const_char_*filename)_const$"><font color=green>writeMFInfo</font></a>(const char *filename) const;
+<dd>int <a href="MuscleData.html#int_writeMUInfo(const_char_*filename)_const$"><font color=green>writeMUInfo</font></a>(const char *filename) const;
+<dd>int <a href="MuscleData.html#int_loadData(_const_char_*muscleDir_)$"><font color=green>loadData</font></a>( const char *muscleDir );
+<dd>int <a href="MuscleData.html#int_dump(FILE_*fp,_int_printFlags_)_const$"><font color=green>dump</font></a>(FILE *fp, int printFlags ) const;
+</dl>
+<i><b>protected</b></i>:
+<dl>
+</dl>
+}; // MuscleData <p>
+<p>Back to the <a href="#topofdoc">top</a> of  <i>MuscleData</i><p>
+<a name="MuscleData()$"><hr><p></p><h3>MuscleData();</h3></a>
+           Create a muscle data object
+<p><pre>
+        <a href="#MuscleData()$">MuscleData</a>();
+</pre>
+<br><p>Back to the <a href="#topofdoc">top</a> of  <i> MuscleData </i> <p>
+<a name="~MuscleData()$"><hr><p></p><h3>~MuscleData();</h3></a>
+           Destructor
+<p><pre>
+        ~MuscleData();
+</pre>
+<br><p>Back to the <a href="#topofdoc">top</a> of  <i> MuscleData </i> <p>
+<a name="int_getXDetect()_const$"><hr><p></p><h3>int getXDetect() const;</h3></a>
+           return the width of a quadrant of the detection area
+<p><pre>
+        int <a href="#int_getXDetect()_const$">getXDetect</a>() const;
+</pre>
+<br><p>Back to the <a href="#topofdoc">top</a> of  <i> MuscleData </i> <p>
+<a name="int_getYDetect()_const$"><hr><p></p><h3>int getYDetect() const;</h3></a>
+           return the height of a quadrant of the detection area
+<p><pre>
+        int <a href="#int_getYDetect()_const$">getYDetect</a>() const;
+</pre>
+<br><p>Back to the <a href="#topofdoc">top</a> of  <i> MuscleData </i> <p>
+<a name="int_getNumMotorUnits()_const$"><hr><p></p><h3>int getNumMotorUnits() const;</h3></a>
+           return the number of motor units recorded
+<p><pre>
+        int <a href="#int_getNumMotorUnits()_const$">getNumMotorUnits</a>() const;
+</pre>
+<br><p>Back to the <a href="#topofdoc">top</a> of  <i> MuscleData </i> <p>
+<a name="int_getNumMotorUnitsInDetectionArea()_const$"><hr><p></p><h3>int getNumMotorUnitsInDetectionArea() const;</h3></a>
+           return the number of motor units in the detection area
+<p><pre>
+        int <a href="#int_getNumMotorUnitsInDetectionArea()_const$">getNumMotorUnitsInDetectionArea</a>() const;
+</pre>
+<br><p>Back to the <a href="#topofdoc">top</a> of  <i> MuscleData </i> <p>
+<a name="float_getMuscleDiameter()_const$"><hr><p></p><h3>float getMuscleDiameter() const;</h3></a>
+           return the diameter of the overall muscle
+<p><pre>
+        float <a href="#float_getMuscleDiameter()_const$">getMuscleDiameter</a>() const;
+</pre>
+<br><p>Back to the <a href="#topofdoc">top</a> of  <i> MuscleData </i> <p>
+<a name="float_getMaxMotorUnitDiameter()_const$"><hr><p></p><h3>float getMaxMotorUnitDiameter() const;</h3></a>
+           return the max possible motor unit territory diameter
+<p><pre>
+        float <a href="#float_getMaxMotorUnitDiameter()_const$">getMaxMotorUnitDiameter</a>() const;
+</pre>
+<br><p>Back to the <a href="#topofdoc">top</a> of  <i> MuscleData </i> <p>
+<a name="float_getMinMotorUnitDiameter()_const$"><hr><p></p><h3>float getMinMotorUnitDiameter() const;</h3></a>
+           return the min possible motor unit territory diameter
+<p><pre>
+        float <a href="#float_getMinMotorUnitDiameter()_const$">getMinMotorUnitDiameter</a>() const;
+</pre>
+<br><p>Back to the <a href="#topofdoc">top</a> of  <i> MuscleData </i> <p>
+<a name="MotorUnit_*getMotorUnitInDetectionArea(int_index)_const$"><hr><p></p><h3>MotorUnit *getMotorUnitInDetectionArea(int index) const;</h3></a>
+           return a motor unit which intersects the
+           detection area
+<p><pre>
+        <a href="MotorUnit.html" target=_top>MotorUnit</a> *<a href="#MotorUnit_*getMotorUnitInDetectionArea(int_index)_const$">getMotorUnitInDetectionArea</a>(int index) const;
+</pre>
+<br><p>Back to the <a href="#topofdoc">top</a> of  <i> MuscleData </i> <p>
+<a name="NeedleInfo_*getNeedleInfo()_const$"><hr><p></p><h3>NeedleInfo *getNeedleInfo() const;</h3></a>
+           return the neelde position info structure
+<p><pre>
+        <a href="NeedleInfo.html" target=_top>NeedleInfo</a> *<a href="#NeedleInfo_*getNeedleInfo()_const$">getNeedleInfo</a>() const;
+</pre>
+<br><p>Back to the <a href="#topofdoc">top</a> of  <i> MuscleData </i> <p>
+<a name="int_writeMFInfo(const_char_*filename)_const$"><hr><p></p><h3>int writeMFInfo(const char *filename) const;</h3></a>
+           write the output file for the muscle fibre data
+<p><pre>
+        int <a href="#int_writeMFInfo(const_char_*filename)_const$">writeMFInfo</a>(const char *filename) const;
+</pre>
+<br><p>Back to the <a href="#topofdoc">top</a> of  <i> MuscleData </i> <p>
+<a name="int_writeMUInfo(const_char_*filename)_const$"><hr><p></p><h3>int writeMUInfo(const char *filename) const;</h3></a>
+           write the output file for the motor unit data
+<p><pre>
+        int <a href="#int_writeMUInfo(const_char_*filename)_const$">writeMUInfo</a>(const char *filename) const;
+</pre>
+<br><p>Back to the <a href="#topofdoc">top</a> of  <i> MuscleData </i> <p>
+<a name="int_loadData(_const_char_*muscleDir_)$"><hr><p></p><h3>int loadData( const char *muscleDir );</h3></a>
+           load the persisted data
+<p><pre>
+        int <a href="#int_loadData(_const_char_*muscleDir_)$">loadData</a>(
+                const char *muscleDir
+            );
+</pre>
+<br><p>Back to the <a href="#topofdoc">top</a> of  <i> MuscleData </i> <p>
+<a name="int_dump(FILE_*fp,_int_printFlags_)_const$"><hr><p></p><h3>int dump(FILE *fp, int printFlags ) const;</h3></a>
+           dump contents to file pointer
+<p><pre>
+        int <a href="#int_dump(FILE_*fp,_int_printFlags_)_const$">dump</a>(FILE *fp, int printFlags = 0x00) const;
+</pre>
+<br><p>Back to the <a href="#topofdoc">top</a> of  <i> MuscleData </i> <p>
+<a name="flat"><hr><p></p></a>
+<h2>All Members</h2>
+<dl>
+<dt><strong>public:</strong>
+<dd>int <a href="MuscleData.html#int_getXDetect()_const$"><font color=green>getXDetect</font></a>() const;
+<dd>int <a href="MuscleData.html#int_getYDetect()_const$"><font color=green>getYDetect</font></a>() const;
+<dd>int <a href="MuscleData.html#int_getNumMotorUnits()_const$"><font color=green>getNumMotorUnits</font></a>() const;
+<dd>int <a href="MuscleData.html#int_getNumMotorUnitsInDetectionArea()_const$"><font color=green>getNumMotorUnitsInDetectionArea</font></a>() const;
+<dd>float <a href="MuscleData.html#float_getMuscleDiameter()_const$"><font color=green>getMuscleDiameter</font></a>() const;
+<dd>float <a href="MuscleData.html#float_getMaxMotorUnitDiameter()_const$"><font color=green>getMaxMotorUnitDiameter</font></a>() const;
+<dd>float <a href="MuscleData.html#float_getMinMotorUnitDiameter()_const$"><font color=green>getMinMotorUnitDiameter</font></a>() const;
+<dd><a href="MotorUnit.html" target=_top>MotorUnit</a> *<a href="MuscleData.html#MotorUnit_*getMotorUnitInDetectionArea(int_index)_const$"><font color=green>getMotorUnitInDetectionArea</font></a>(int index) const;
+<dd><a href="NeedleInfo.html" target=_top>NeedleInfo</a> *<a href="MuscleData.html#NeedleInfo_*getNeedleInfo()_const$"><font color=green>getNeedleInfo</font></a>() const;
+<dd>int <a href="MuscleData.html#int_writeMFInfo(const_char_*filename)_const$"><font color=green>writeMFInfo</font></a>(const char *filename) const;
+<dd>int <a href="MuscleData.html#int_writeMUInfo(const_char_*filename)_const$"><font color=green>writeMUInfo</font></a>(const char *filename) const;
+<dd>int <a href="MuscleData.html#int_loadData(_const_char_*muscleDir_)$"><font color=green>loadData</font></a>( const char *muscleDir );
+<dd>int <a href="MuscleData.html#int_dump(FILE_*fp,_int_printFlags_)_const$"><font color=green>dump</font></a>(FILE *fp, int printFlags ) const;
+<dt><strong>protected:</strong>
+</dl>
+<p>Back to the <a href="#topofdoc">top</a> of  MuscleData<p>
+<a name="parents"><hr><p></p></a>
+<h2>Ancestors</h2>
+Class does not inherit from any other class.<p>
+<p>Back to the <a href="#topofdoc">top</a> of  MuscleData<p>
+<a name="children"><hr><p></p></a>
+<h2>Descendants</h2>
+Class is not inherited by any others.<p>
+<p>Back to the <a href="#topofdoc">top</a> of  MuscleData<p>
+<hr><p></p>
+Generated from source by the <i><a href="http://www.stratasys.com/software/cocoon/index.htm">Cocoon</a></i> utilities on Tue Jul 30 17:58:07 2002
+.<p>
+<address>Report <a href="mailto:jkotula@vitalimages.com">problems</a> to jkotula@vitalimages.com</address>
+</body></html>

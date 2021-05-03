@@ -1,0 +1,4 @@
+#!/bin/sh
+
+cocoon -l C++Tools
+mv *.gif *.html ../docs

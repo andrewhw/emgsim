@@ -1,0 +1,93 @@
+<html><head><title>SimulationLibrary Library</title></head>
+<body><h1>
+<img src=coclogo.gif>
+<a name="topofdoc">Library SimulationLibrary</a></h1>
+<hr><p></p></a>
+<p><strong>[
+<a href="/keyweb.html">Keywords</a> | 
+<a href="#classes">Classes</a> | 
+<a href="#data">Data</a> | 
+<a href="#functions">Functions</a>
+ ]</strong><p>
+<h2>Quick Index</h2>
+<dl>
+</dl>
+<p><br><p><a name="classes"><hr><p></p></a><h2>Classes</h2>
+<dl><dl>
+<dt><a href="MotorUnit.html" target=_top>MotorUnit</a>
+<dd>
+    This class defines the location and fibres for
+    a single motor unit.
+
+    See also <a href="MuscleFibre.html" target=_top>MuscleFibre</a> and <a href="MuscleData.html" target=_top>MuscleData</a>.
+<dt><a href="Muap.html" target=_top>Muap</a>
+<dd>
+    This class controls a definition of a single <a href="Muap.html" target=_top>Muap</a>, and
+    contains the interface to save/restore it to a file
+    store.
+    <p>
+    This class is used within the Jitter code, as the
+    individual MFAP's managed within this code are accessed
+    in order to generate a Jitter'ed MUAP when required.
+    <p>
+    This class contains the data to generate a MUAP train.  An
+    instance of this object will contain a set of MFAP firings,
+    which can be used with a given Jitter value to create
+    a MUAP train.
+    <p>
+    See the calls:
+    <br>
+    int calcJitteredMuap()
+    <br>
+    and
+    <br>
+    muapDataElement *getCurrentMuap();
+    <br>
+    for details.
+<dt><a href="MuscleData.html" target=_top>MuscleData</a>
+<dd>
+    This class holds the physical definition of the
+    current muscle.
+
+    See also <a href="MotorUnit.html" target=_top>MotorUnit</a> and <a href="MuscleFibre.html" target=_top>MuscleFibre</a>.
+<dt><a href="MuscleFibre.html" target=_top>MuscleFibre</a>
+<dd>
+    This class defines the location, motor unit,
+    neural attachment point in Z (jShift) and
+    diameter of a single muscle fibre
+
+    See also <a href="MotorUnit.html" target=_top>MotorUnit</a> and <a href="MuscleData.html" target=_top>MuscleData</a>.
+<dt><a href="NeedleInfo.html" target=_top>NeedleInfo</a>
+<dd>
+    This class defines the physical positioning of the
+    needle.
+<dt><a href="SimulationResult.html" target=_top>SimulationResult</a>
+<dd>    
+    A wrapper for all the result data from a simulator run.
+    <p>
+    This class will contain all the resulting data for a simulation
+    run including:
+    <ul>
+    <li>The EMG signal, via getEmgData()</li>
+    <li>Motor unit and muscle fibre data, via getMuscleData()</li>
+    <li><a href="Muap.html" target=_top>Muap</a> structures, via getMuap()</li>
+    </ul>
+<dt><a href="Simulator.html" target=_top>Simulator</a>
+<dd>    
+    This object wraps up all the simulator functionality -- calling
+    run on this object will return a result object which can be used
+    to get all the data from a single simulator run.
+</dl></dl>
+<p>Back to the <a href="#topofdoc">top</a> of  <i>SimulationLibrary</i><p>
+<a name="data"><hr><p></p></a><h2>Data</h2>
+<dl>
+</dl>
+<p>Back to the <a href="#topofdoc">top</a> of  <i>SimulationLibrary</i><p>
+<a name="functions"><hr><p></p></a><h2>Global Functions</h2>
+<dl>
+</dl>
+<p>Back to the <a href="#topofdoc">top</a> of  <i>SimulationLibrary</i><p>
+<hr><p></p>
+Generated from source by the <i><a href="http://www.stratasys.com/software/cocoon/index.htm">Cocoon</a></i> utilities on Tue Jul 30 17:58:07 2002
+.<p>
+<address>Report <a href="mailto:jkotula@vitalimages.com">problems</a> to jkotula@vitalimages.com</address>

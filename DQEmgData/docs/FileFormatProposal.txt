@@ -1,0 +1,223 @@
+
+Proposed File Format for Data Interchange with the DQEMG Program
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+Update 1.1
+----------
+
+Goals:
+------
+    This file format should provide a standard for data interchange
+    for the current and future data interchange requirements for
+    systems wishing to exchange data with the DQEMG program.
+
+    For that reason, there will be encoding in the file to allow
+    _forward compatibility_, in as much as possible, between
+    files written using this proposed format and future versions
+    of DQEMG and of programs writing these files.
+
+    This will be accomplished by using a version field describing
+    changes to the file format, as well as a length-of-header field
+    allowing future software to increase the size of the header
+    area without interfering with the ability of current software
+    to read the file.
+
+    This implies that all software can make the assumption that
+    the header fields, up to the MINIUM of the size indicated
+    and the size the software is aware of, will maintain the same
+    layout and type description (ie; we will not change the types
+    or encodings of any fields in the existing header in any future
+    versions of this standard).
+
+Data Encoding:
+--------------
+    Data in these files is assumed to be in Intel format, which
+    implies little-endian encoding of all multi-byte integer data,
+    and Intel representation of floating point data.
+
+
+Format of this Document:
+------------------------
+    In this document, the following conventions will be used to
+    extend the standard Backus Naur Form:
+        {type[length]}
+                - This will indicate a list of length <length> values,
+                  of type <type>.  Example:  char[8] indicates
+                  a string of 8 characters
+        {type[length] = "Value"}
+                - This will indicate a list of length <length> values
+                  of type <type>, which have the given constant
+                  string.  Example:  char[3] = "EMG"
+
+
+<contraction-data-file> ::= <contraction-data-header> <channel data>
+                ; Overall Contraction Data file
+
+
+<contraction-data-header> ::=
+        <const-file-type-id {char[5] = "DQEMG"}>
+                ; to identify file contents as this file type
+                ; when name is absent (for example, over a socket
+                ; connection)
+        <vendor-id {char[8]}>
+                ; Allows a file to be identified as having been
+                ; created by a given vendor program.
+        <aquisition-date {time_t}>
+                ; the date at which the file was aquired, in the
+                ; format of time() (seconds since the beginning
+		; of the epoch, Jan 1 1970).
+        <file-version {char[1] = 0x00}>
+                ; flag indicating revision level of file for
+                ; forward compatibility.  If this is non-zero,
+                ; it means that we had to drastically change
+                ; the specification
+        <num-channels {unsigned short}>
+                ; this identifies the number of channels of data
+                ; stored in this file.  See <channel-data>
+        <begin-data-offset {off_t[*variable*]}>
+                ; Provided for forward compatibility, as described
+                ; above.  This is a table with <num-channels>
+                ; entries, each entry specifying an absolute file
+                ; offset in bytes at which a <channel data>
+                ; structure begins.  These offsets are of type
+                ; off_t, to be passed to fseek()
+        <operator-description-length {unsigned short}>
+        <operator-description char[*variable*]>
+                ; this is a string of length <operator-
+                ; description-length> providing textual data
+                ; relating to the name of the operator who
+                ; collected the data.
+        <patient-description-length {unsigned short}>
+        <patient-description char[*variable*]>
+                ; this is a string of length <patient-
+                ; description-length> providing textual data
+                ; relating to the name of the patient from which
+                ; the data was collected.
+        <muscle-description-length {unsigned short}>
+        <muscle-description char[*variable*]>
+                ; this is a string of length <muscle-description-length>
+                ; providing textual data relating to the name of the
+                ; muscle, including laterality, from which the
+                ; data collected.
+        <file-description-length {unsigned short}>
+        <file-description char[*variable*]>
+                ; this is a string of length <file-description-length>
+                ; providing any textual data relating to the
+                ; contraction in general.
+    END_OF_BASE_REVISION_DATA
+    Version 1.2 data added here
+        <contraction-type {char}>
+		; a flag set indicating contraction type.  Notable
+		; values include 0x04 for EVOKED potentials causing
+		; extra data to be stored below
+    END_OF_BASE_REVISION_DATA
+    Version 1.1 data added here
+        <patient-study-id {unsigned short}>
+		; a 16-bit quantity identifiying which of several
+		; possible studies for this patient this contraction
+		; belongs to.  The default value for this field is
+		; zero.
+        <patient-date-of-birth {long}>
+		; A value in Julian date format indicating the birth day
+		; of the patient.  The Julian date format is derived
+		; from an algorithm in
+		; Communications of the ACM Volume 6, No. 8, (Aug. 1963).
+		; Source code for this implementation is in the `julian.c'
+		; file which should accompany this distribution.
+        <patient-gender {unsigned char}>
+		; a three-value constant:
+		;  0 -> not recorded
+		;  1 -> female
+		;  2 -> male
+        <muscle-laterality {unsigned char}>
+		; a three-value constant:
+		;  0 -> not recorded
+		;  1 -> left
+		;  2 -> right
+
+<channel-data> ::= <channel-header> <channel-data>
+
+
+<channel-header> ::=
+        <data-offset {off_t}>
+                ; Forward compatibility.  Indicates the actual
+                ; absolute offset in bytes to the start of the
+                ; channel data
+        <channel-number {unsigned char}>
+                ; channel number
+        <hipass-cutoff {unsigned long}>
+                ; in units of 0.001 Hz
+        <lopass-cutoff {unsigned long}>
+                ; in units of 0.001 Hz
+        <data-encoding {short[1] = 0x0002}>
+                ; Indicates what, if any, data encoding is present.
+                ; This is provided in case we need to change the
+                ; encoding at a later time.  The high byte of the
+                ; encoding is a set of flags (to indicate possible
+                ; compression, etc).  The lower byte indicates
+                ; the width of the data in bytes.  The indicated
+                ; value of 0x0002 will therefore indicate no flags,
+                ; and a two-byte (short) data width
+        <deprecated-sampling-rate {unsigned long}>
+                ; sampling rate in samples per second -- now deprecated
+		; and re-stored as a float later, see sampling-rate
+		; below
+        <num-samples {unsigned long}>
+                ; indicates the number of samples in the
+                ; <channel-data> list
+        <elapsed time {unsigned long}>
+                ; length of time over which data was acquired in ms
+        <units-description-length {unsigned short}>
+        <units-description char[*variable*]>
+                ; this is a string of length <units-description-
+                ; length> providing textual data relating to the
+                ; units of the channel data (e.g. uV)
+        <scale {float (Intel format)}>
+                ; multiplier to scale channel data into the units
+                ; provided (e.g. to convert from A/D units to uV)
+        <channel-description-length {unsigned short}>
+        <channel-description char[*variable*]>
+                ; this is a string of length <channel-description-
+                ; length> providing any textual data relating to
+                ; the channel data in general
+    Version 1.2 data added here
+	IF IS_EVOKED:
+		    ; if the contraction-type is 0x04 EVOKED, the following
+		    ; fields should be present, otherwise these fields
+		    ; are not placed in the file
+		<negative-peak-area {float (Intel format)}>
+		<peak-to-peak-amplitude {float (Intel format)}>
+		<negative-peak-amplitude {float (Intel format)}>
+		<onset-position {float (Intel format)}>
+		<positive-peak-position {float (Intel format)}>
+		<negative-peak-position {float (Intel format)}>
+		<end-position {float (Intel format)}>
+	;;
+	;; The following fields are unconditionally included (assuming
+	;; the length indicates these fields are valid
+	;;
+	<is-smup-valid long>
+		; 
+	<num-smups-in-avg long>
+		; 
+	<evoked-duration float>
+		; 
+	<evoked-negative-peak-duration float>
+		; 
+	<evoked-area float>
+		; 
+	<evoked-peak-onset-position float>
+		; 
+	<sampling-rate float>
+		; a second encoding of sampling rate, used to allow
+		; sampling rate to have fractional values.
+
+
+<channel-data> ::=
+        <sample[*variable*]>
+                ; A list of samples of channel data.  The number
+                ; of items in the list is provided in <num-samples>
+                ; in the header for this channel.  The width (type)
+                ; of the samples is provided in <data-encoding> in
+                ; the header for this channel.
+

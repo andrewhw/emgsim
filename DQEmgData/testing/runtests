@@ -1,0 +1,72 @@
+#!/bin/sh
+
+##
+## Run all the tests in all subdirs
+##
+totalNTest=0
+totalNFail=0
+ALLISWELL="YES"
+SAWSOMETHING="NO"
+
+TMPFILE="/tmp/testsuite.$$"
+TMPFILE2="/tmp/testsuite.successline.$$"
+
+trap "rm -rf ${TMPFILE} ${TMPFILE2}" 0 2 3 15
+
+TEST_DIRECTORIES=""
+
+for test in "$@"
+do
+    if [ -f "${test}/run" ]
+    then
+	TEST_DIRECTORIES="$TEST_DIRECTORIES ${test}"
+    fi
+done
+
+if [ X"${TEST_DIRECTORIES}" = X"" ]
+then
+    for test in *
+    do
+	if [ -f "${test}/run" ]
+	then
+	    TEST_DIRECTORIES="$TEST_DIRECTORIES ${test}"
+	fi
+    done
+fi
+
+
+for testDir in ${TEST_DIRECTORIES}
+do
+    SAWSOMETHING="YES"
+    cat /dev/null > ${TMPFILE}
+    echo -n "Running '${testDir}' tests . . ."
+    (cd ${testDir} ; sh ./run > ${TMPFILE} )
+    if
+	grep SUCCESS ${TMPFILE} > ${TMPFILE2}
+    then
+	NTESTS=`sed -e 's/.*No Failures in \(.*\) tests/\1/' < ${TMPFILE2}`
+	echo " SUCCESS -- ${NTESTS} tests"
+    else
+	echo " FAILURE!"
+	echo "Output follows : ------------------------------"
+	cat ${TMPFILE}
+	echo "-----------------------------------------------"
+	ALLISWELL="NO"
+    fi
+done
+
+echo ""
+if [ X"${SAWSOMETHING}" = X"YES" ]
+then
+    if [ X"${ALLISWELL}" = X"YES" ]
+    then
+	echo ""
+	echo "Overall status : Success"
+	echo ""
+    else
+	echo ""
+	echo "Overall status : Failure"
+	echo ""
+    fi
+fi
+

@@ -1,0 +1,51 @@
+#!/bin/sh
+##	: createplotsinglemfap,v 1.1 2001/12/09 18:46:23 andrew Exp $
+##
+##	Build a plot file out of the log file specified
+##
+
+TYPE="EPS"
+TYPE="PNG"
+
+workfile=tmp-gp.$$
+
+for dir in ../simulator/data/sim*
+do
+	files=`echo "${dir}/muscle/eemg/jitter-buffer*.jlg"`
+	echo "Working on ${dir}"
+	value=`echo ${dir} | sed -e 's/.*sim//' -e 's/[0-9][0-9]/0\.&/'`
+	output=`echo ${dir} | sed -e 's/.*sim//'`
+
+cat > $workfile << __EOF__
+set title "Internal Jitter Correlation - ${value} ms"
+set xlabel "Gaussian Value"
+set ylabel "Buffer Offset (ms)"
+set nokey
+__EOF__
+	if [ X"${TYPE}" = X"EPS" ]
+	then
+	    cat >> $workfile << __EOF__
+set output "jitter-${output}.eps"
+set terminal postscript eps color
+__EOF__
+	else
+	    cat >> $workfile << __EOF__
+set output "jitter-${output}.gif"
+set terminal gif medium size 1024,768
+__EOF__
+#set output "jitter-${output}.png"
+#set terminal png large color
+	fi
+
+	COMMA=""
+	PLOTLINE="plot"
+	for f in ${files}
+	do
+	    PLOTLINE="${PLOTLINE}${COMMA} "'"'"${f}"'"'
+	    COMMA=","
+	done
+
+	echo "${PLOTLINE}" >> $workfile
+	echo "load \"$workfile\" " | gnuplot
+	rm $workfile
+done

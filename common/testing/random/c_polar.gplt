@@ -1,0 +1,5 @@
+set polar
+set size square
+set grid polar
+plot "circle_points.txt" using 4:3 with points
+pause -1

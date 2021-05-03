@@ -1,0 +1,281 @@
+# Microsoft Developer Studio Generated Dependency File, included by common.mak
+
+.\file\attvalue.c : \
+	".\include\attvalfile.h"\
+	".\include\listalloc.h"\
+	".\include\localstrings.h"\
+	".\include\log.h"\
+	".\include\os_defs.h"\
+	".\include\protodefns.h"\
+	".\include\stringtools.h"\
+	".\include\tclckalloc.h"\
+	".\include\tokens.h"\
+	
+
+.\path\convertPath.c : \
+	".\include\localstrings.h"\
+	".\include\log.h"\
+	".\include\msgir.h"\
+	".\include\os_defs.h"\
+	".\include\pathtools.h"\
+	".\include\protodefns.h"\
+	".\include\stringtools.h"\
+	".\include\tclckalloc.h"\
+	
+
+.\error\Derror.c : \
+	".\include\log.h"\
+	".\include\os_defs.h"\
+	".\include\protodefns.h"\
+	
+
+.\path\dirlist.c : \
+	".\include\localstrings.h"\
+	".\include\log.h"\
+	".\include\massert.h"\
+	".\include\os_defs.h"\
+	".\include\pathtools.h"\
+	".\include\protodefns.h"\
+	".\include\stringtools.h"\
+	".\include\tclckalloc.h"\
+	
+
+.\path\fopenpath.c : \
+	".\include\localstrings.h"\
+	".\include\log.h"\
+	".\include\msgir.h"\
+	".\include\os_defs.h"\
+	".\include\pathtools.h"\
+	".\include\protodefns.h"\
+	".\include\stringtools.h"\
+	".\include\tclckalloc.h"\
+	
+
+.\os\getOsVersion.c : \
+	".\include\log.h"\
+	".\include\os_defs.h"\
+	".\include\os_types.h"\
+	".\include\protodefns.h"\
+	
+
+.\intrretry\i_close.c : \
+	".\include\msgir.h"\
+	".\include\os_defs.h"\
+	".\include\protodefns.h"\
+	
+
+.\intrretry\i_open.c : \
+	".\include\log.h"\
+	".\include\msgdbids.h"\
+	".\include\msgir.h"\
+	".\include\os_defs.h"\
+	".\include\protodefns.h"\
+	
+
+.\intrretry\i_rdwr.c : \
+	".\include\localstrings.h"\
+	".\include\log.h"\
+	".\include\msgdbids.h"\
+	".\include\msgir.h"\
+	".\include\os_defs.h"\
+	".\include\protodefns.h"\
+	".\include\tclckalloc.h"\
+	
+
+.\intrretry\i_stat.c : \
+	".\include\msgir.h"\
+	".\include\os_defs.h"\
+	".\include\protodefns.h"\
+	
+
+.\io\io_utils.c : \
+	".\include\io_utils.h"\
+	".\include\localstrings.h"\
+	".\include\log.h"\
+	".\include\os_defs.h"\
+	".\include\pathtools.h"\
+	".\include\protodefns.h"\
+	".\include\stringtools.h"\
+	".\include\tclckalloc.h"\
+	
+
+.\alloc\isort.c : \
+	".\include\listalloc.h"\
+	".\include\localstrings.h"\
+	".\include\log.h"\
+	".\include\msgdbids.h"\
+	".\include\msgisort.h"\
+	".\include\os_defs.h"\
+	".\include\protodefns.h"\
+	".\include\tclckalloc.h"\
+	
+
+.\log\log.c : \
+	".\include\dir_defaults.h"\
+	".\include\listalloc.h"\
+	".\include\localstrings.h"\
+	".\include\log.h"\
+	".\include\massert.h"\
+	".\include\msgir.h"\
+	".\include\os_defs.h"\
+	".\include\pathtools.h"\
+	".\include\protodefns.h"\
+	".\include\stringtools.h"\
+	".\include\tclckalloc.h"\
+	
+
+.\alloc\memlist.c : \
+	".\include\listalloc.h"\
+	".\include\localstrings.h"\
+	".\include\os_defs.h"\
+	".\include\protodefns.h"\
+	".\include\tclckalloc.h"\
+	
+
+.\string\niceDouble.c : \
+	".\include\os_defs.h"\
+	".\include\protodefns.h"\
+	
+
+.\path\openpath.c : \
+	".\include\localstrings.h"\
+	".\include\log.h"\
+	".\include\massert.h"\
+	".\include\msgdbids.h"\
+	".\include\msgir.h"\
+	".\include\msgstrerror.h"\
+	".\include\os_defs.h"\
+	".\include\pathtools.h"\
+	".\include\protodefns.h"\
+	".\include\stringtools.h"\
+	".\include\tclckalloc.h"\
+	
+
+.\alloc\panic.c : \
+	".\include\os_defs.h"\
+	".\include\protodefns.h"\
+	
+
+.\random\random.c : \
+	".\include\os_defs.h"\
+	".\include\protodefns.h"\
+	".\include\random.h"\
+	
+
+.\interpolate\spline.c : \
+	".\include\localstrings.h"\
+	".\include\log.h"\
+	".\include\nrinterpolate.h"\
+	".\include\os_defs.h"\
+	".\include\protodefns.h"\
+	".\include\tclckalloc.h"\
+	
+
+.\string\strbasename.c : \
+	".\include\os_defs.h"\
+	".\include\protodefns.h"\
+	
+
+.\string\strconcat.c : \
+	".\include\localstrings.h"\
+	".\include\os_defs.h"\
+	".\include\protodefns.h"\
+	".\include\tclckalloc.h"\
+	
+
+.\string\strdup.c : \
+	".\include\localstrings.h"\
+	".\include\os_defs.h"\
+	".\include\protodefns.h"\
+	".\include\tclckalloc.h"\
+	
+
+.\error\strerror.c : \
+	".\include\os_defs.h"\
+	".\include\protodefns.h"\
+	
+
+.\string\strisblank.c : \
+	".\include\os_defs.h"\
+	".\include\protodefns.h"\
+	
+
+.\string\strndup.c : \
+	".\include\localstrings.h"\
+	".\include\os_defs.h"\
+	".\include\protodefns.h"\
+	".\include\tclckalloc.h"\
+	
+
+.\string\strqconcat.c : \
+	".\include\localstrings.h"\
+	".\include\os_defs.h"\
+	".\include\protodefns.h"\
+	".\include\tclckalloc.h"\
+	
+
+.\string\strsplit.c : \
+	".\include\os_defs.h"\
+	".\include\protodefns.h"\
+	
+
+.\string\strTimeDelta.c : \
+	".\include\os_defs.h"\
+	".\include\protodefns.h"\
+	
+
+.\string\strTimeString.c : \
+	".\include\localstrings.h"\
+	".\include\massert.h"\
+	".\include\os_defs.h"\
+	".\include\protodefns.h"\
+	".\include\tclckalloc.h"\
+	
+
+.\string\strtruncblank.c : \
+	".\include\os_defs.h"\
+	".\include\protodefns.h"\
+	
+
+.\string\strunctrl.c : \
+	".\include\localstrings.h"\
+	".\include\log.h"\
+	".\include\msgdbids.h"\
+	".\include\os_defs.h"\
+	".\include\protodefns.h"\
+	".\include\tclckalloc.h"\
+	
+
+.\string\strUnique.c : \
+	".\include\os_defs.h"\
+	".\include\protodefns.h"\
+	
+
+.\alloc\tclCkalloc.c : \
+	".\include\localstrings.h"\
+	".\include\log.h"\
+	".\include\msgir.h"\
+	".\include\os_defs.h"\
+	".\include\protodefns.h"\
+	".\include\stringtools.h"\
+	".\include\tclckalloc.h"\
+	
+
+.\timing\timer.c : \
+	".\include\localstrings.h"\
+	".\include\os_defs.h"\
+	".\include\protodefns.h"\
+	".\include\reporttimer.h"\
+	".\include\tclckalloc.h"\
+	
+
+.\file\tokenizer.c : \
+	".\include\attvalfile.h"\
+	".\include\localstrings.h"\
+	".\include\log.h"\
+	".\include\os_defs.h"\
+	".\include\protodefns.h"\
+	".\include\stringtools.h"\
+	".\include\tclckalloc.h"\
+	".\include\tokens.h"\
+	

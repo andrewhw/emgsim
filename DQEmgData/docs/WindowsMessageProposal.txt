@@ -1,0 +1,166 @@
+
+Proposed Windows Message Notification Interface
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+
+Goals:
+------
+    The windows message notification should be kept as simple
+    as possible; while maintaining enough flexibility to
+    ensure the ability to handle most common usage situations.
+
+    As a rule of thumb, we wish to keep all the data in the
+    contraction file, for simple data encapsulation.
+
+    The windows message system should be able to be easily used
+    to share data between DQEMG and a sibling application; we
+    wish to avoid "hard-coding" values which may cause problems
+    later into this document.
+
+Requirements:
+-------------
+    As all the contraction data can be encoded in a file, the
+    requirement of the windows message interface will be simply
+    to notify the DQEMG program that a new data file is ready.
+
+    We will use the Registry feature of Windows to store data
+    to allow each application to know how to access the other.
+
+
+Interface:  Registry
+--------------------
+    In the registry, we will place entries to allow the data acquisition
+    application to know where the DQEMG executable is located.
+    Similarly, entries will be provided to allow DQEMG to know about
+    the location and name of the data acquisition application.
+
+    All entries will be stored in:
+	[HKEY_LOCAL_MACHINE\SOFTWARE\EMG]
+
+    The three entries of interest will be:
+    	"AcquireProgram" (String)
+		o full path to the data acquisition program
+    	
+    	"AcquireTitle" (String)
+		o sub-string to be found in window title of acquire program
+		  (default "acquire")
+    	
+    	"DQEMGProgram" (String)
+		o full path to the DQEMG program
+    	
+
+
+Interface:  Passing control to DQEMG
+------------------------------------
+    In order to notify the DQEMG application that a new data
+    file is ready, a single Windows message is required to
+    notify the program that a data file is ready for processing.
+
+    The DQEMG application will be available as the only
+    application whose title begins with the string "DQEMG".
+    This application can be found by using the following
+    algorithm:
+
+            CWnd *nextWnd, *curWnd, *targetWnd = NULL;
+            CString title;
+            
+            curWnd = CWnd::GetDesktopWindow();
+            nextWnd = curWnd->GetWindow(GW_CHILD);
+
+            if (nextWnd != NULL) {
+                nextWnd->GetWindowText(title);
+                curWnd = nextWnd;
+            }
+
+            while (nextWnd != NULL) {
+                nextWnd = curWnd->GetWindow(GW_HWNDNEXT);
+                if (nextWnd != NULL) {
+                    nextWnd->GetWindowText(title);
+                    if (title.Left(5) == "DQEMG") {
+                        /* assign targetWnd */
+                        targetWnd = nextWnd;
+                        break;
+                    }
+                    curWnd = nextWnd;
+                }
+            }
+
+    Using the value located in this fashion, a user defined
+    message can be passed to the target application (DQEMG).
+
+    If the DQEMG application is not found by this algorithm,
+    it is not running.  In that case, the value stored in
+    registry key
+	HKEY_LOCAL_MACHINE\SOFTWARE\EMG\DqemgProgram
+    will contain a path to the executable to be started, and
+    sent the message.
+
+    This message will be referred to in this document as
+        WM_TAKE_FOCUS
+    and will have a value equal to
+        WM_APP + 1 (0x8001)
+    placing it in the inter-program available windows message
+    range.
+
+
+    This message can be sent using the SendMessage() function,
+    as follows:
+        targetWnd->SendMessage(WM_TAKE_FOCUS, atom, sender);
+
+    Arguments:
+    atom
+        this argument will have one of the two following
+        values, to indicate the location of the data file:
+
+        0 (NULL)
+                indicating data file is in the default location:
+                    c:\DQEMG\contraction.dat
+        non-zero
+                indicating that the atom is an object of type
+                ATOM pointing at a string value indicating the
+                path and filename of the data file.
+        
+                In this second case, the data ATOM can be
+                allocated by using the
+                    GlobalAddAtom( string_value )
+                call to create a shared atom in which to pass
+                the file name.  This will place a string
+                in the "Global Atom Table" for reference by
+                the receiving program.
+    sender
+        This argument will be the window handle of the window
+        in the sending application to which focus should be
+        returned by DQEMG.
+
+
+Interface:  DQEMG Passing Control Back to Acquire Program
+--------------------------------------------------------
+    Similarly, when returning focus to the sibling application,
+    DQEMG will post a message of type WM_TAKE_FOCUS, to the
+    application window indicated in the last message posted
+    to the DQEMG application.
+
+    If the DQEMG application has not yet received a message,
+    it will attempt to send a focus message to the application
+    whose window name matches that stored in registry entry:
+	HKEY_LOCAL_MACHINE\SOFTWARE\EMG\AcquireTitle
+
+    If no such application exists, DQEMG will start the
+    program indicated in registry entry
+	HKEY_LOCAL_MACHINE\SOFTWARE\EMG\AcquireProgram
+    and will re-search for the window named in
+	HKEY_LOCAL_MACHINE\SOFTWARE\EMG\AcquireTitle
+    to send the WM_TAKE_FOCUS message
+    
+
+Interface:  Data File
+---------------------
+    Please see attached document for description of the data file.
+
+
+Memory Management:
+------------------
+    In the interests of simplicity, applications allocating
+    memory will free it.  For this reason, the DQEMG program will
+    not attempt to clean up or delete atoms shared in the global
+    atom space.
+

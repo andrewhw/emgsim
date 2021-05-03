@@ -1,0 +1,805 @@
+<html><head><title>DQEmgData Documentation</title></head>
+<body><h1>
+<a name="topofdoc"><img src=coclogo.gif>DQEmgData</a></h1>
+<dl>
+<dd>
+    An entire contraction data set.  A contraction
+    is made up of a global definition and a set
+    of channel data structures.  Each channel data
+    structure will store the values recorded by a
+    given instrument (EMG, temperature, force, etc).
+
+    <p>
+    A contraction is the set of all of the channels
+    recorded at the same time, plus the following
+    information in the header to make the data
+    useful for study purposes:
+        <ul>
+        <li>
+        Operator/Physician
+            <ul>
+            <li>
+            This is the operator of the EMG collection
+            equipment.  The operator field should be
+            filled in a standard way to allow other
+            contractions and studies by the same operator
+            to be identified.
+            </li>
+            </ul>
+        </li>
+        <li>
+        Patient
+            <ul>
+            <li>
+            This will be a unique identifier for the
+            patient.  Note that this is a freeform text
+            field, so any identification number as well
+            as, or instead of, the patient name may be
+            included here.
+            </li>
+            </ul>
+        </li>
+        <li>
+        Muscle
+            <ul>
+            <li>
+            This is the muscle identification from which
+            the contraction was recorded.  Laterality
+            will identify the side of the body, allowing
+            the identification of the particular muscle
+            on the patient.
+            </li>
+            </ul>
+        </li>
+        <li>
+        Muscle Side
+            <ul>
+            <li>
+            This is the muscle laterality.
+            </li>
+            </ul>
+        </li>
+        
+        <li>
+        Contraction Type
+            <ul>
+            <li>
+            AcquireEmg stores the contraction type of the 
+            signal. The voluntary signal can be one 
+            of the three following types: <br>
+                o MVC   <br>
+                o Spontaneous Activity <br>
+                o Sub-Maximal   <br>
+            Whereas the evoke signal has the type
+            o Evoke.
+            </li>
+            </ul>
+        </li>
+    
+        <li>
+        General textual note information
+            <ul>
+            <li>
+            This field is intended for the storage
+            of any general textual information the physician
+            wishes to attach to this contraction.
+            <p>
+            Note that this field may be further delimited
+            by the user software in order to include any
+            notational attributes which may be available
+            in the program.
+            </li>
+            </ul>
+        </li>
+        <li>
+        Vendor of recording equipment/software
+            <ul>
+            <li>
+            This field is intended to allow the identification
+            of the company and particular software platform
+            which created the file.  This will primarily
+            be of use when doing historical studies, where
+            the particular platform may become a relevant
+            factor.
+            </li>
+            </ul>
+        </li>
+        <li>
+        Date & Time of the contraction
+            <ul>
+            <li>
+            Date & time of the study, stored in seconds
+            since the epoch of Jan 1, 1970, UTC.
+            </li>
+            </ul>
+        </li>
+        <li>
+        `New' Flags
+            <ul>
+            <li>
+            There are three `new' flags which can be set,
+            to force the contraction to belong to a new
+            muscle, patient or study.
+            <p>
+            These are useful when the file format is used
+            as part of a data stream between an acquisition
+            program &amp; patient database and the QEMG
+            system.  The flags are used to indicate when
+            a new data set is being introduced, when this
+            information may not be apparant from inspection
+            of the other data fields.  For instance, if the
+            physician wishes to start a new study of the
+            bicep muscle, this flag may be set for the
+            first contraction, in order that this data not
+            be collected with data from existing bicep contractions
+            for the same patient.
+            </li>
+            </ul>
+        </li>
+        </ul>
+
+    <p>
+    The file format is described in the
+    <a href="FileFormatProposal.txt">FileFormatProposal</a>
+    text file.
+</dl>
+<hr><p></p>
+<p><strong>[ 
+<a href="DQEmgDataFile.html">DQEmgDataFile</a> | 
+<a href="DQEmgData.h">Source</a> | 
+<a href="/keyweb.html">Keywords</a> | 
+<a href="#aag">Summary</a> | <a href="#parents">Ancestors</a> | <a href="#flat">All Members</a> | <a href="#children">Descendants</a>  ]</strong><p>
+<h2><a name="quickind">Quick Index</a></h2>
+<dl>
+</dl>
+<a name="aag"><hr><p></p></a><h2>Class Summary</h2>
+class OS_EXPORT DQEmgData
+
+<br>{
+<br><i><b>public</b></i>:
+<dl>
+<dd>enum <a href="DQEmgData.html#enum_Flags_$"><font color=green>Flags</font></a> ;
+<dd>enum <a href="DQEmgData.html#enum_Gender_$"><font color=green>Gender</font></a> ;
+<dd>enum <a href="DQEmgData.html#enum_Side_$"><font color=green>Side</font></a> ;
+<dd>enum <a href="DQEmgData.html#enum_Contraction_$"><font color=green>Contraction</font></a> ;
+<dd><a href="DQEmgData.html#DQEmgData()$"><font color=green>DQEmgData</font></a>();
+<dd><a href="DQEmgData.html#DQEmgData(const_char_*vendorId)$"><font color=green>DQEmgData</font></a>(const char *vendorId);
+<dd><a href="DQEmgData.html#DQEmgData(_const_char_*vendorId,_time_t_acquisitionTime,_const_char_*operatorDescription,_const_char_*patientDescription,_const_char_*patientID,_int_yearOfBirth,_int_monthOfBirth,_int_dayOfBirth,_Gender_patientGender,_const_char_*muscleDescription,_Side_muscleSide,_const_char_*generalDescription_)$"><font color=green>DQEmgData</font></a>( const char *vendorId, time_t acquisitionTime, const char *operatorDescription, const char *patientDescription, const char *patientID, int yearOfBirth, int monthOfBirth, int dayOfBirth, Gender patientGender, const char *muscleDescription, Side muscleSide, const char *generalDescription );
+<dd><a href="DQEmgData.html#DQEmgData(_const_char_*vendorId,_time_t_acquisitionTime,_const_char_*operatorDescription,_const_char_*patientDescripton,_const_char_*muscleDescription,_const_char_*generalDescription_)$"><font color=green>DQEmgData</font></a>( const char *vendorId, time_t acquisitionTime, const char *operatorDescription, const char *patientDescripton, const char *muscleDescription, const char *generalDescription );
+<dd>~<a href="DQEmgData.html#~DQEmgData()$"><font color=green>DQEmgData</font></a>();
+<dd>int <a href="DQEmgData.html#int_setVendorIdentifier(const_char_*id)$"><font color=green>setVendorIdentifier</font></a>(const char *id);
+<dd>const char *<a href="DQEmgData.html#const_char_*getVendorIdentifier()_const$"><font color=green>getVendorIdentifier</font></a>() const;
+<dd>void <a href="DQEmgData.html#void_setOperatorDescription(const_char_*newDescription)$"><font color=green>setOperatorDescription</font></a>(const char *newDescription);
+<dd>const char *<a href="DQEmgData.html#const_char_*getOperatorDescription()_const$"><font color=green>getOperatorDescription</font></a>() const;
+<dd>unsigned long <a href="DQEmgData.html#unsigned_long_isNewOperator()_const$"><font color=green>isNewOperator</font></a>() const;
+<dd>void <a href="DQEmgData.html#void_setNewOperator(int_newOperator)$"><font color=green>setNewOperator</font></a>(int newOperator);
+<dd>unsigned long <a href="DQEmgData.html#unsigned_long_isNewPatient()_const$"><font color=green>isNewPatient</font></a>() const;
+<dd>void <a href="DQEmgData.html#void_setNewPatient(int_newPatient)$"><font color=green>setNewPatient</font></a>(int newPatient);
+<dd>unsigned long <a href="DQEmgData.html#unsigned_long_isNewMuscle()_const$"><font color=green>isNewMuscle</font></a>() const;
+<dd>void <a href="DQEmgData.html#void_setNewMuscle(int_newMuscle)$"><font color=green>setNewMuscle</font></a>(int newMuscle);
+<dd>void <a href="DQEmgData.html#void_setAllPatientInformation(_const_char_*description,_const_char_*patientID,_int_yearOfBirth,_int_monthOfBirth,_int_dayOfBirth,_Gender_gender_)$"><font color=green>setAllPatientInformation</font></a>( const char *description, const char *patientID, int yearOfBirth, int monthOfBirth, int dayOfBirth, Gender gender );
+<dd>void <a href="DQEmgData.html#void_setPatientDescription(const_char_*newDescription)$"><font color=green>setPatientDescription</font></a>(const char *newDescription);
+<dd>const char *<a href="DQEmgData.html#const_char_*getPatientDescription()_const$"><font color=green>getPatientDescription</font></a>() const;
+<dd>void <a href="DQEmgData.html#void_setPatientID(const_char_*newID)$"><font color=green>setPatientID</font></a>(const char *newID);
+<dd>const char *<a href="DQEmgData.html#const_char_*getPatientID()_const$"><font color=green>getPatientID</font></a>() const;
+<dd>int <a href="DQEmgData.html#int_setPatientDateOfBirth(_int_yearOfBirth,_int_monthOfBirth,_int_dayOfBirth_)$"><font color=green>setPatientDateOfBirth</font></a>( int yearOfBirth, int monthOfBirth, int dayOfBirth );
+<dd>int <a href="DQEmgData.html#int_getPatientDateOfBirth(_unsigned_long_*year,_unsigned_long_*month,_unsigned_long_*day_)_const$"><font color=green>getPatientDateOfBirth</font></a>( unsigned long *year, unsigned long *month, unsigned long *day ) const;
+<dd>long <a href="DQEmgData.html#long_getPatientJulianDateOfBirth()_const$"><font color=green>getPatientJulianDateOfBirth</font></a>() const;
+<dd>void <a href="DQEmgData.html#void_setPatientGender(Gender_gender)$"><font color=green>setPatientGender</font></a>(Gender gender);
+<dd>int <a href="DQEmgData.html#int_getPatientGender()_const$"><font color=green>getPatientGender</font></a>() const;
+<dd>void <a href="DQEmgData.html#void_setMuscleDescription(const_char_*newDescription)$"><font color=green>setMuscleDescription</font></a>(const char *newDescription);
+<dd>const char *<a href="DQEmgData.html#const_char_*getMuscleDescription()_const$"><font color=green>getMuscleDescription</font></a>() const;
+<dd>void <a href="DQEmgData.html#void_setMuscleSide(Side_laterality)$"><font color=green>setMuscleSide</font></a>(Side laterality);
+<dd>int <a href="DQEmgData.html#int_getMuscleSide()_const$"><font color=green>getMuscleSide</font></a>() const;
+<dd>void <a href="DQEmgData.html#void_setGeneralDescription(const_char_*newDescription)$"><font color=green>setGeneralDescription</font></a>(const char *newDescription);
+<dd>const char *<a href="DQEmgData.html#const_char_*getGeneralDescription()_const$"><font color=green>getGeneralDescription</font></a>() const;
+<dd>void <a href="DQEmgData.html#void_setAcquisitionTime(time_t_newTime)$"><font color=green>setAcquisitionTime</font></a>(time_t newTime);
+<dd>time_t <a href="DQEmgData.html#time_t_getAcquisitionTime()_const$"><font color=green>getAcquisitionTime</font></a>() const;
+<dd>unsigned char <a href="DQEmgData.html#unsigned_char_getNumChannels()_const$"><font color=green>getNumChannels</font></a>() const;
+<dd>int <a href="DQEmgData.html#int_addChannel(DQEmgChannelData_*newChannel)$"><font color=green>addChannel</font></a>(<a href="DQEmgChannelData.html" target=_top>DQEmgChannelData</a> *newChannel);
+<dd><a href="DQEmgChannelData.html" target=_top>DQEmgChannelData</a> *<a href="DQEmgData.html#DQEmgChannelData_*getChannel(unsigned_char_index)_const$"><font color=green>getChannel</font></a>(unsigned char index) const;
+<dd>void <a href="DQEmgData.html#void_setContractionType(Contraction_contractionType)$"><font color=green>setContractionType</font></a>(Contraction contractionType);
+<dd>int <a href="DQEmgData.html#int_getContractionType()$"><font color=green>getContractionType</font></a>();
+<dd>int <a href="DQEmgData.html#int_isEvoked()$"><font color=green>isEvoked</font></a>();
+<dd>void <a href="DQEmgData.html#void_setCmapStored(int_fStored)$"><font color=green>setCmapStored</font></a>(int fStored);
+<dd>int <a href="DQEmgData.html#int_isCmapStored()$"><font color=green>isCmapStored</font></a>();
+<dd>void <a href="DQEmgData.html#void_set_mSmupStored(int_fStored)$"><font color=green>set_mSmupStored</font></a>(int fStored);
+<dd>int <a href="DQEmgData.html#int_is_mSmupStored()$"><font color=green>is_mSmupStored</font></a>();
+<dd>const char *<a href="DQEmgData.html#const_char_*getFileName()_const$"><font color=green>getFileName</font></a>() const;
+<dd>void <a href="DQEmgData.html#void_setFileName(const_char_*newFileName)$"><font color=green>setFileName</font></a>(const char *newFileName);
+<dd>int <a href="DQEmgData.html#int_load(const_char_*filename)$"><font color=green>load</font></a>(const char *filename);
+<dd>int <a href="DQEmgData.html#int_store(const_char_*filename)$"><font color=green>store</font></a>(const char *filename);
+<dd>void <a href="DQEmgData.html#void_clear()$"><font color=green>clear</font></a>();
+<dd>void <a href="DQEmgData.html#void_dump(FILE_*fp,_int_dumpChannelData_)$"><font color=green>dump</font></a>(FILE *fp, int dumpChannelData );
+<dd>int <a href="DQEmgData.html#int_getError()_const$"><font color=green>getError</font></a>() const;
+<dd>char *<a href="DQEmgData.html#char_*getErrorMessage(int_errorNumber)_const$"><font color=green>getErrorMessage</font></a>(int errorNumber) const;
+</dl>
+<i><b>protected</b></i>:
+<dl>
+</dl>
+}; // DQEmgData <p>
+<p>Back to the <a href="#topofdoc">top</a> of  <i>DQEmgData</i><p>
+<a name="enum_Flags_$"><hr><p></p><h3>enum Flags ;</h3></a>
+           Constants for the study flags
+<p><pre>
+        enum Flags {
+                        FLAG_NEW_OPERATOR       = 0x01,
+                        FLAG_NEW_PATIENT        = 0x02,
+                        FLAG_NEW_MUSCLE         = 0x04
+                    };
+</pre>
+<br><p>Back to the <a href="#topofdoc">top</a> of  <i> DQEmgData </i> <p>
+<a name="enum_Gender_$"><hr><p></p><h3>enum Gender ;</h3></a>
+           Constants for the two genders
+<p><pre>
+        enum Gender {
+                        NOT_RECODED             = 0x00,
+                        FEMALE                  = 0x01,
+                        MALE                    = 0x02
+                    };
+</pre>
+<br><p>Back to the <a href="#topofdoc">top</a> of  <i> DQEmgData </i> <p>
+<a name="enum_Side_$"><hr><p></p><h3>enum Side ;</h3></a>
+           Constants to represent the two sides
+           of the body
+<p><pre>
+        enum Side {
+                        NOT_RECORDED            = 0x00,
+                        LEFT                    = 0x01,
+                        RIGHT                   = 0x02
+                    };
+</pre>
+<br><p>Back to the <a href="#topofdoc">top</a> of  <i> DQEmgData </i> <p>
+<a name="enum_Contraction_$"><hr><p></p><h3>enum Contraction ;</h3></a>
+           Contraction Type
+<p><pre>
+        enum Contraction {
+                        NOT_DEFINED             = 0x00,
+                        MVC                     = 0x01,
+                        SPONTANEOUS             = 0x02,
+                        SUB_MAXIMAL             = 0x03,
+                        EVOKED                  = 0x04
+                    };
+</pre>
+<br><p>Back to the <a href="#topofdoc">top</a> of  <i> DQEmgData </i> <p>
+<a name="DQEmgData()$"><hr><p></p><h3>DQEmgData();</h3></a>
+           Construct an empty data set.
+           <p>
+           This is largely useful in conjunction
+           with the <a href="#int_load(const_char_*filename)$">load</a>() method below, which
+           will populate the data set from a file.
+<p><pre>
+        <a href="#DQEmgData()$">DQEmgData</a>();
+</pre>
+<br><p>Back to the <a href="#topofdoc">top</a> of  <i> DQEmgData </i> <p>
+<a name="DQEmgData(const_char_*vendorId)$"><hr><p></p><h3>DQEmgData(const char *vendorId);</h3></a>
+           Construct a data set for a specific
+           vendor
+           <p>
+           The resulting data set can be filled
+           in using the set methods below.  This
+           is also provided for cases where
+           all of the parameters to the next
+           constructor are unknown.
+<p><pre>
+        <a href="#DQEmgData()$">DQEmgData</a>(const char *vendorId);
+</pre>
+<br><p>Back to the <a href="#topofdoc">top</a> of  <i> DQEmgData </i> <p>
+<a name="DQEmgData(_const_char_*vendorId,_time_t_acquisitionTime,_const_char_*operatorDescription,_const_char_*patientDescription,_const_char_*patientID,_int_yearOfBirth,_int_monthOfBirth,_int_dayOfBirth,_Gender_patientGender,_const_char_*muscleDescription,_Side_muscleSide,_const_char_*generalDescription_)$"><hr><p></p><h3>DQEmgData( const char *vendorId, time_t acquisitionTime, const char *operatorDescription, const char *patientDescription, const char *patientID, int yearOfBirth, int monthOfBirth, int dayOfBirth, Gender patientGender, const char *muscleDescription, Side muscleSide, const char *generalDescription );</h3></a>
+           Construct a data set to begin a
+           contraction set.  This will stamp the
+           global information into the data set
+           in preparation for adding in the
+           contraction data.
+           <p>
+           This is the primary constructor which
+           is intended for use when generating
+           data files.  It is assumed that all
+           of the files in a given study will
+           have the same operator and patient
+           description filled in.  This will
+           aid in their use when doing cross-patient
+           studies, in order to refer back to the
+           original data source.
+<p><pre>
+        <a href="#DQEmgData()$">DQEmgData</a>(
+                        const char *vendorId,
+                        time_t acquisitionTime,
+                        const char *operatorDescription,
+                        const char *patientDescription,
+                        const char *patientID,
+                        int yearOfBirth,
+                                int monthOfBirth,
+                                int dayOfBirth,
+                        Gender patientGender,
+                        const char *muscleDescription,
+                        Side muscleSide,
+                        const char *generalDescription = NULL
+                    );
+</pre>
+<br><p>Back to the <a href="#topofdoc">top</a> of  <i> DQEmgData </i> <p>
+<a name="DQEmgData(_const_char_*vendorId,_time_t_acquisitionTime,_const_char_*operatorDescription,_const_char_*patientDescripton,_const_char_*muscleDescription,_const_char_*generalDescription_)$"><hr><p></p><h3>DQEmgData( const char *vendorId, time_t acquisitionTime, const char *operatorDescription, const char *patientDescripton, const char *muscleDescription, const char *generalDescription );</h3></a>
+           Construct a data set to begin a
+           contraction set.  This will stamp the
+           global information into the data set
+           in preparation for adding in the
+           contraction data.
+<p><pre>
+        <a href="#DQEmgData()$">DQEmgData</a>(
+                        const char *vendorId,
+                        time_t acquisitionTime,
+                        const char *operatorDescription,
+                        const char *patientDescripton,
+                        const char *muscleDescription,
+                        const char *generalDescription = NULL
+                    );
+</pre>
+<br><p>Back to the <a href="#topofdoc">top</a> of  <i> DQEmgData </i> <p>
+<a name="~DQEmgData()$"><hr><p></p><h3>~DQEmgData();</h3></a>
+           Delete a data set, including all
+           channels within.
+<p><pre>
+        ~DQEmgData();
+</pre>
+<br><p>Back to the <a href="#topofdoc">top</a> of  <i> DQEmgData </i> <p>
+<a name="int_setVendorIdentifier(const_char_*id)$"><hr><p></p><h3>int setVendorIdentifier(const char *id);</h3></a>
+           Set the vendor identifier string
+<p><pre>
+        int <a href="#int_setVendorIdentifier(const_char_*id)$">setVendorIdentifier</a>(const char *id);
+</pre>
+<br><p>Back to the <a href="#topofdoc">top</a> of  <i> DQEmgData </i> <p>
+<a name="const_char_*getVendorIdentifier()_const$"><hr><p></p><h3>const char *getVendorIdentifier() const;</h3></a>
+           Return the vendor identifier string
+           previously stored
+<p><pre>
+        const char *<a href="#const_char_*getVendorIdentifier()_const$">getVendorIdentifier</a>() const;
+</pre>
+<br><p>Back to the <a href="#topofdoc">top</a> of  <i> DQEmgData </i> <p>
+<a name="void_setOperatorDescription(const_char_*newDescription)$"><hr><p></p><h3>void setOperatorDescription(const char *newDescription);</h3></a>
+           Set the operator/physician description string
+<p><pre>
+        void <a href="#void_setOperatorDescription(const_char_*newDescription)$">setOperatorDescription</a>(const char *newDescription);
+</pre>
+<br><p>Back to the <a href="#topofdoc">top</a> of  <i> DQEmgData </i> <p>
+<a name="const_char_*getOperatorDescription()_const$"><hr><p></p><h3>const char *getOperatorDescription() const;</h3></a>
+           Get the operator/physician description string
+<p><pre>
+        const char *<a href="#const_char_*getOperatorDescription()_const$">getOperatorDescription</a>() const;
+</pre>
+<br><p>Back to the <a href="#topofdoc">top</a> of  <i> DQEmgData </i> <p>
+<a name="unsigned_long_isNewOperator()_const$"><hr><p></p><h3>unsigned long isNewOperator() const;</h3></a>
+           Returns whether this is a new operator
+           relative to the last time contraction
+           file sent
+<p><pre>
+        unsigned long <a href="#unsigned_long_isNewOperator()_const$">isNewOperator</a>() const;
+</pre>
+<br><p>Back to the <a href="#topofdoc">top</a> of  <i> DQEmgData </i> <p>
+<a name="void_setNewOperator(int_newOperator)$"><hr><p></p><h3>void setNewOperator(int newOperator);</h3></a>
+           Set whether this is a new operator
+           relative to the last time contraction
+           file sent
+<p><pre>
+        void <a href="#void_setNewOperator(int_newOperator)$">setNewOperator</a>(int newOperator);
+</pre>
+<br><p>Back to the <a href="#topofdoc">top</a> of  <i> DQEmgData </i> <p>
+<a name="unsigned_long_isNewPatient()_const$"><hr><p></p><h3>unsigned long isNewPatient() const;</h3></a>
+           Returns whether this is a new patient
+           relative to the last time contraction
+           file sent
+<p><pre>
+        unsigned long <a href="#unsigned_long_isNewPatient()_const$">isNewPatient</a>() const;
+</pre>
+<br><p>Back to the <a href="#topofdoc">top</a> of  <i> DQEmgData </i> <p>
+<a name="void_setNewPatient(int_newPatient)$"><hr><p></p><h3>void setNewPatient(int newPatient);</h3></a>
+           Set whether this is a new patient
+           relative to the last time contraction
+           file sent
+<p><pre>
+        void <a href="#void_setNewPatient(int_newPatient)$">setNewPatient</a>(int newPatient);
+</pre>
+<br><p>Back to the <a href="#topofdoc">top</a> of  <i> DQEmgData </i> <p>
+<a name="unsigned_long_isNewMuscle()_const$"><hr><p></p><h3>unsigned long isNewMuscle() const;</h3></a>
+           Returns whether this is a new muscle
+           relative to the last time contraction
+           file sent
+<p><pre>
+        unsigned long <a href="#unsigned_long_isNewMuscle()_const$">isNewMuscle</a>() const;
+</pre>
+<br><p>Back to the <a href="#topofdoc">top</a> of  <i> DQEmgData </i> <p>
+<a name="void_setNewMuscle(int_newMuscle)$"><hr><p></p><h3>void setNewMuscle(int newMuscle);</h3></a>
+           Set whether this is a new muscle
+           relative to the last time contraction
+           file sent
+<p><pre>
+        void <a href="#void_setNewMuscle(int_newMuscle)$">setNewMuscle</a>(int newMuscle);
+</pre>
+<br><p>Back to the <a href="#topofdoc">top</a> of  <i> DQEmgData </i> <p>
+<a name="void_setAllPatientInformation(_const_char_*description,_const_char_*patientID,_int_yearOfBirth,_int_monthOfBirth,_int_dayOfBirth,_Gender_gender_)$"><hr><p></p><h3>void setAllPatientInformation( const char *description, const char *patientID, int yearOfBirth, int monthOfBirth, int dayOfBirth, Gender gender );</h3></a>
+           Set all the patient information at once
+<p><pre>
+        void <a href="#void_setAllPatientInformation(_const_char_*description,_const_char_*patientID,_int_yearOfBirth,_int_monthOfBirth,_int_dayOfBirth,_Gender_gender_)$">setAllPatientInformation</a>(
+                const char *description,
+                const char *patientID,
+                int yearOfBirth,
+                        int monthOfBirth,
+                        int dayOfBirth,
+                Gender gender
+            );
+</pre>
+<br><p>Back to the <a href="#topofdoc">top</a> of  <i> DQEmgData </i> <p>
+<a name="void_setPatientDescription(const_char_*newDescription)$"><hr><p></p><h3>void setPatientDescription(const char *newDescription);</h3></a>
+           Set the patient string
+<p><pre>
+        void <a href="#void_setPatientDescription(const_char_*newDescription)$">setPatientDescription</a>(const char *newDescription);
+</pre>
+<br><p>Back to the <a href="#topofdoc">top</a> of  <i> DQEmgData </i> <p>
+<a name="const_char_*getPatientDescription()_const$"><hr><p></p><h3>const char *getPatientDescription() const;</h3></a>
+           Get the patient string
+<p><pre>
+        const char *<a href="#const_char_*getPatientDescription()_const$">getPatientDescription</a>() const;
+</pre>
+<br><p>Back to the <a href="#topofdoc">top</a> of  <i> DQEmgData </i> <p>
+<a name="void_setPatientID(const_char_*newID)$"><hr><p></p><h3>void setPatientID(const char *newID);</h3></a>
+           Set the patient ID string
+<p><pre>
+        void <a href="#void_setPatientID(const_char_*newID)$">setPatientID</a>(const char *newID);
+</pre>
+<br><p>Back to the <a href="#topofdoc">top</a> of  <i> DQEmgData </i> <p>
+<a name="const_char_*getPatientID()_const$"><hr><p></p><h3>const char *getPatientID() const;</h3></a>
+           Get the patient ID string
+<p><pre>
+        const char *<a href="#const_char_*getPatientID()_const$">getPatientID</a>() const;
+</pre>
+<br><p>Back to the <a href="#topofdoc">top</a> of  <i> DQEmgData </i> <p>
+<a name="int_setPatientDateOfBirth(_int_yearOfBirth,_int_monthOfBirth,_int_dayOfBirth_)$"><hr><p></p><h3>int setPatientDateOfBirth( int yearOfBirth, int monthOfBirth, int dayOfBirth );</h3></a>
+           Sets the patient D.O.B.  Returns
+           false if the year/month/day combination
+           is invalid in the Gregorian calendar
+           for that year (ie; the values of the
+           number are checked for consistency
+           relative to days in month, etc).
+<p><pre>
+        int <a href="#int_setPatientDateOfBirth(_int_yearOfBirth,_int_monthOfBirth,_int_dayOfBirth_)$">setPatientDateOfBirth</a>(
+                int yearOfBirth,
+                int monthOfBirth,
+                int dayOfBirth
+            );
+</pre>
+<br><p>Back to the <a href="#topofdoc">top</a> of  <i> DQEmgData </i> <p>
+<a name="int_getPatientDateOfBirth(_unsigned_long_*year,_unsigned_long_*month,_unsigned_long_*day_)_const$"><hr><p></p><h3>int getPatientDateOfBirth( unsigned long *year, unsigned long *month, unsigned long *day ) const;</h3></a>
+           Get the patient D.O.B
+<p><pre>
+        int <a href="#int_getPatientDateOfBirth(_unsigned_long_*year,_unsigned_long_*month,_unsigned_long_*day_)_const$">getPatientDateOfBirth</a>(
+                unsigned long *year,
+                unsigned long *month,
+                unsigned long *day
+            ) const;
+</pre>
+<br><p>Back to the <a href="#topofdoc">top</a> of  <i> DQEmgData </i> <p>
+<a name="long_getPatientJulianDateOfBirth()_const$"><hr><p></p><h3>long getPatientJulianDateOfBirth() const;</h3></a>
+           Get the date of birth in the Julian
+           calendar internal storage format
+<p><pre>
+        long <a href="#long_getPatientJulianDateOfBirth()_const$">getPatientJulianDateOfBirth</a>() const;
+</pre>
+<br><p>Back to the <a href="#topofdoc">top</a> of  <i> DQEmgData </i> <p>
+<a name="void_setPatientGender(Gender_gender)$"><hr><p></p><h3>void setPatientGender(Gender gender);</h3></a>
+           Set the patient gender
+<p><pre>
+        void <a href="#void_setPatientGender(Gender_gender)$">setPatientGender</a>(Gender gender);
+</pre>
+<br><p>Back to the <a href="#topofdoc">top</a> of  <i> DQEmgData </i> <p>
+<a name="int_getPatientGender()_const$"><hr><p></p><h3>int getPatientGender() const;</h3></a>
+           Get the patient gender
+<p><pre>
+        int <a href="#int_getPatientGender()_const$">getPatientGender</a>() const;
+</pre>
+<br><p>Back to the <a href="#topofdoc">top</a> of  <i> DQEmgData </i> <p>
+<a name="void_setMuscleDescription(const_char_*newDescription)$"><hr><p></p><h3>void setMuscleDescription(const char *newDescription);</h3></a>
+           Set the muscle description.
+<p><pre>
+        void <a href="#void_setMuscleDescription(const_char_*newDescription)$">setMuscleDescription</a>(const char *newDescription);
+</pre>
+<br><p>Back to the <a href="#topofdoc">top</a> of  <i> DQEmgData </i> <p>
+<a name="const_char_*getMuscleDescription()_const$"><hr><p></p><h3>const char *getMuscleDescription() const;</h3></a>
+           Get the muscle description
+<p><pre>
+        const char *<a href="#const_char_*getMuscleDescription()_const$">getMuscleDescription</a>() const;
+</pre>
+<br><p>Back to the <a href="#topofdoc">top</a> of  <i> DQEmgData </i> <p>
+<a name="void_setMuscleSide(Side_laterality)$"><hr><p></p><h3>void setMuscleSide(Side laterality);</h3></a>
+           Set the side of the body the muscle
+           is on
+<p><pre>
+        void <a href="#void_setMuscleSide(Side_laterality)$">setMuscleSide</a>(Side laterality);
+</pre>
+<br><p>Back to the <a href="#topofdoc">top</a> of  <i> DQEmgData </i> <p>
+<a name="int_getMuscleSide()_const$"><hr><p></p><h3>int getMuscleSide() const;</h3></a>
+           Get the laterality of the muscle
+<p><pre>
+        int <a href="#int_getMuscleSide()_const$">getMuscleSide</a>() const;
+</pre>
+<br><p>Back to the <a href="#topofdoc">top</a> of  <i> DQEmgData </i> <p>
+<a name="void_setGeneralDescription(const_char_*newDescription)$"><hr><p></p><h3>void setGeneralDescription(const char *newDescription);</h3></a>
+           Set the optional general description
+           field.  Used for recording notes,
+           etc.  Max field length is 65535 bytes
+<p><pre>
+        void <a href="#void_setGeneralDescription(const_char_*newDescription)$">setGeneralDescription</a>(const char *newDescription);
+</pre>
+<br><p>Back to the <a href="#topofdoc">top</a> of  <i> DQEmgData </i> <p>
+<a name="const_char_*getGeneralDescription()_const$"><hr><p></p><h3>const char *getGeneralDescription() const;</h3></a>
+           Return the general description
+           field.  This will be NULL if not
+           set.
+<p><pre>
+        const char *<a href="#const_char_*getGeneralDescription()_const$">getGeneralDescription</a>() const;
+</pre>
+<br><p>Back to the <a href="#topofdoc">top</a> of  <i> DQEmgData </i> <p>
+<a name="void_setAcquisitionTime(time_t_newTime)$"><hr><p></p><h3>void setAcquisitionTime(time_t newTime);</h3></a>
+           Stamp the archive with a given time.
+           This time is stored as seconds since
+           the base epoch of Jan 1, 1970 UTC.
+<p>
+           <p>
+           This is a time suitable for conversion by
+           the ctime() function and related
+           functions.
+<p>
+           <p>
+           To generate values for this function,
+           the time() function may be used, which
+           generates UTC normalized values in
+           this scheme.
+<p><pre>
+        void <a href="#void_setAcquisitionTime(time_t_newTime)$">setAcquisitionTime</a>(time_t newTime);
+</pre>
+<br><p>Back to the <a href="#topofdoc">top</a> of  <i> DQEmgData </i> <p>
+<a name="time_t_getAcquisitionTime()_const$"><hr><p></p><h3>time_t getAcquisitionTime() const;</h3></a>
+           Return the time a data set was created.
+<p>
+           <p>
+           This time is stored as seconds since
+           the base epoch of Jan 1, 1970 UTC.
+<p>
+           <p>
+           This is a time suitable for conversion by
+           the ctime() function and related
+           functions.
+<p><pre>
+        time_t <a href="#time_t_getAcquisitionTime()_const$">getAcquisitionTime</a>() const;
+</pre>
+<br><p>Back to the <a href="#topofdoc">top</a> of  <i> DQEmgData </i> <p>
+<a name="unsigned_char_getNumChannels()_const$"><hr><p></p><h3>unsigned char getNumChannels() const;</h3></a>
+           Return the number of channels which
+           are recorded in this data set.
+<p><pre>
+        unsigned char <a href="#unsigned_char_getNumChannels()_const$">getNumChannels</a>() const;
+</pre>
+<br><p>Back to the <a href="#topofdoc">top</a> of  <i> DQEmgData </i> <p>
+<a name="int_addChannel(DQEmgChannelData_*newChannel)$"><hr><p></p><h3>int addChannel(DQEmgChannelData *newChannel);</h3></a>
+           Add a new channel.  In order to add
+           channel data, create and populate
+           an object of type <a href="DQEmgChannelData.html" target=_top>DQEmgChannelData</a>
+           and use this function to pass the
+           new channel in.
+<p>
+           <p>
+           There are a maximum of 256 channels
+           per data set.
+<p>
+	   <p>
+	   Returns 1 on success, and 0 on failure
+	   (too many channels)
+<p><pre>
+        int <a href="#int_addChannel(DQEmgChannelData_*newChannel)$">addChannel</a>(<a href="DQEmgChannelData.html" target=_top>DQEmgChannelData</a> *newChannel);
+</pre>
+<br><p>Back to the <a href="#topofdoc">top</a> of  <i> DQEmgData </i> <p>
+<a name="DQEmgChannelData_*getChannel(unsigned_char_index)_const$"><hr><p></p><h3>DQEmgChannelData *getChannel(unsigned char index) const;</h3></a>
+           Get a channel data structure.
+<p>
+           <p>
+           Valid values of index range from 0
+           to the value returned from
+           <a href="#unsigned_char_getNumChannels()_const$">getNumChannels</a>()
+<p><pre>
+        <a href="DQEmgChannelData.html" target=_top>DQEmgChannelData</a> *<a href="#DQEmgChannelData_*getChannel(unsigned_char_index)_const$">getChannel</a>(unsigned char index) const;
+</pre>
+<br><p>Back to the <a href="#topofdoc">top</a> of  <i> DQEmgData </i> <p>
+<a name="void_setContractionType(Contraction_contractionType)$"><hr><p></p><h3>void setContractionType(Contraction contractionType);</h3></a>
+	    AcquireEmg stores the contraction type of the 
+            signal. The voluntary signal can be one 
+            of the three following types: <br>
+             o MVC   <br>
+             o Spontaneous Activity <br>
+             o Sub-Maximal   <br>
+            Whereas the evoke signal has the type
+             o Evoked.
+	    MPS files are all of the Evoked type
+<p><pre>
+        void <a href="#void_setContractionType(Contraction_contractionType)$">setContractionType</a>(Contraction contractionType);
+</pre>
+<br><p>Back to the <a href="#topofdoc">top</a> of  <i> DQEmgData </i> <p>
+<a name="int_getContractionType()$"><hr><p></p><h3>int getContractionType();</h3></a>
+	   Get the type of contraction 
+<p><pre>
+        int  <a href="#int_getContractionType()$">getContractionType</a>();
+</pre>
+<br><p>Back to the <a href="#topofdoc">top</a> of  <i> DQEmgData </i> <p>
+<a name="int_isEvoked()$"><hr><p></p><h3>int isEvoked();</h3></a>
+	   Returns true if the contraction type is evoked
+<p><pre>
+        int <a href="#int_isEvoked()$">isEvoked</a>();
+</pre>
+<br><p>Back to the <a href="#topofdoc">top</a> of  <i> DQEmgData </i> <p>
+<a name="void_setCmapStored(int_fStored)$"><hr><p></p><h3>void setCmapStored(int fStored);</h3></a>
+	   Flag used to indicate that a CMAP evoked response is stored in the fiel
+<p><pre>
+        void <a href="#void_setCmapStored(int_fStored)$">setCmapStored</a>(int fStored);
+</pre>
+<br><p>Back to the <a href="#topofdoc">top</a> of  <i> DQEmgData </i> <p>
+<a name="int_isCmapStored()$"><hr><p></p><h3>int isCmapStored();</h3></a>
+	   Returns true if CMAP evoked response is stored in the file
+<p>
+<p><pre>
+        int <a href="#int_isCmapStored()$">isCmapStored</a>();
+</pre>
+<br><p>Back to the <a href="#topofdoc">top</a> of  <i> DQEmgData </i> <p>
+<a name="void_set_mSmupStored(int_fStored)$"><hr><p></p><h3>void set_mSmupStored(int fStored);</h3></a>
+	   Flag used to indicate that SMUP evoked responses are stored in the file
+	   This is used by MPS
+<p><pre>
+        void <a href="#void_set_mSmupStored(int_fStored)$">set_mSmupStored</a>(int fStored);
+</pre>
+<br><p>Back to the <a href="#topofdoc">top</a> of  <i> DQEmgData </i> <p>
+<a name="int_is_mSmupStored()$"><hr><p></p><h3>int is_mSmupStored();</h3></a>
+	   Returns true if SMUP evoked responses are dtored in the file	
+<p>
+<p><pre>
+        int <a href="#int_is_mSmupStored()$">is_mSmupStored</a>();
+</pre>
+<br><p>Back to the <a href="#topofdoc">top</a> of  <i> DQEmgData </i> <p>
+<a name="const_char_*getFileName()_const$"><hr><p></p><h3>const char *getFileName() const;</h3></a>
+           Get the filename under which the
+           data set was stored.
+<p><pre>
+        const char *<a href="#const_char_*getFileName()_const$">getFileName</a>() const;
+</pre>
+<br><p>Back to the <a href="#topofdoc">top</a> of  <i> DQEmgData </i> <p>
+<a name="void_setFileName(const_char_*newFileName)$"><hr><p></p><h3>void setFileName(const char *newFileName);</h3></a>
+           Set the filename under which the
+           data set will be stored.
+<p><pre>
+        void <a href="#void_setFileName(const_char_*newFileName)$">setFileName</a>(const char *newFileName);
+</pre>
+<br><p>Back to the <a href="#topofdoc">top</a> of  <i> DQEmgData </i> <p>
+<a name="int_load(const_char_*filename)$"><hr><p></p><h3>int load(const char *filename);</h3></a>
+           Load all data from the indicated data
+           file.
+           <p>
+           Returns 1 on success, and 0 on error.
+<p><pre>
+        int <a href="#int_load(const_char_*filename)$">load</a>(const char *filename);
+</pre>
+<br><p>Back to the <a href="#topofdoc">top</a> of  <i> DQEmgData </i> <p>
+<a name="int_store(const_char_*filename)$"><hr><p></p><h3>int store(const char *filename);</h3></a>
+           Store data to the indicated data
+           file.
+           <p>
+           Returns 1 on success, and 0 on error.
+<p><pre>
+        int <a href="#int_store(const_char_*filename)$">store</a>(const char *filename);
+</pre>
+<br><p>Back to the <a href="#topofdoc">top</a> of  <i> DQEmgData </i> <p>
+<a name="void_clear()$"><hr><p></p><h3>void clear();</h3></a>
+           Clear out all the contents.  Re-sets
+           all fields to NULL.
+<p><pre>
+        void <a href="#void_clear()$">clear</a>();
+</pre>
+<br><p>Back to the <a href="#topofdoc">top</a> of  <i> DQEmgData </i> <p>
+<a name="void_dump(FILE_*fp,_int_dumpChannelData_)$"><hr><p></p><h3>void dump(FILE *fp, int dumpChannelData );</h3></a>
+           Dump all the header info to the given
+           file pointer.  The flag controls whether
+           to also dump all channel header data
+<p><pre>
+        void <a href="#void_dump(FILE_*fp,_int_dumpChannelData_)$">dump</a>(FILE *fp, int dumpChannelData = 0x01);
+</pre>
+<br><p>Back to the <a href="#topofdoc">top</a> of  <i> DQEmgData </i> <p>
+<a name="int_getError()_const$"><hr><p></p><h3>int getError() const;</h3></a>
+           If any of the above funtions returned
+           an error status, the error state
+           is available with this function
+<p>
+           <p>
+           Error status 1 indicates that the
+           error is available through the errno
+           variable in the C standard library.
+<p><pre>
+        int <a href="#int_getError()_const$">getError</a>() const;
+</pre>
+<br><p>Back to the <a href="#topofdoc">top</a> of  <i> DQEmgData </i> <p>
+<a name="char_*getErrorMessage(int_errorNumber)_const$"><hr><p></p><h3>char *getErrorMessage(int errorNumber) const;</h3></a>
+           Short error messages are available
+           through passing an error state from
+           <a href="#int_getError()_const$">getError</a>() into this function.
+<p>
+           <p>
+           If the error status is 1, this function
+           returns a message from strerror() in the
+           C standard library
+<p><pre>
+        char *<a href="#char_*getErrorMessage(int_errorNumber)_const$">getErrorMessage</a>(int errorNumber) const;
+</pre>
+<br><p>Back to the <a href="#topofdoc">top</a> of  <i> DQEmgData </i> <p>
+<a name="flat"><hr><p></p></a>
+<h2>All Members</h2>
+<dl>
+<dt><strong>public:</strong>
+<dd>enum <a href="DQEmgData.html#enum_Flags_$"><font color=green>Flags</font></a> ;
+<dd>enum <a href="DQEmgData.html#enum_Gender_$"><font color=green>Gender</font></a> ;
+<dd>enum <a href="DQEmgData.html#enum_Side_$"><font color=green>Side</font></a> ;
+<dd>enum <a href="DQEmgData.html#enum_Contraction_$"><font color=green>Contraction</font></a> ;
+<dd>int <a href="DQEmgData.html#int_setVendorIdentifier(const_char_*id)$"><font color=green>setVendorIdentifier</font></a>(const char *id);
+<dd>const char *<a href="DQEmgData.html#const_char_*getVendorIdentifier()_const$"><font color=green>getVendorIdentifier</font></a>() const;
+<dd>void <a href="DQEmgData.html#void_setOperatorDescription(const_char_*newDescription)$"><font color=green>setOperatorDescription</font></a>(const char *newDescription);
+<dd>const char *<a href="DQEmgData.html#const_char_*getOperatorDescription()_const$"><font color=green>getOperatorDescription</font></a>() const;
+<dd>unsigned long <a href="DQEmgData.html#unsigned_long_isNewOperator()_const$"><font color=green>isNewOperator</font></a>() const;
+<dd>void <a href="DQEmgData.html#void_setNewOperator(int_newOperator)$"><font color=green>setNewOperator</font></a>(int newOperator);
+<dd>unsigned long <a href="DQEmgData.html#unsigned_long_isNewPatient()_const$"><font color=green>isNewPatient</font></a>() const;
+<dd>void <a href="DQEmgData.html#void_setNewPatient(int_newPatient)$"><font color=green>setNewPatient</font></a>(int newPatient);
+<dd>unsigned long <a href="DQEmgData.html#unsigned_long_isNewMuscle()_const$"><font color=green>isNewMuscle</font></a>() const;
+<dd>void <a href="DQEmgData.html#void_setNewMuscle(int_newMuscle)$"><font color=green>setNewMuscle</font></a>(int newMuscle);
+<dd>void <a href="DQEmgData.html#void_setAllPatientInformation(_const_char_*description,_const_char_*patientID,_int_yearOfBirth,_int_monthOfBirth,_int_dayOfBirth,_Gender_gender_)$"><font color=green>setAllPatientInformation</font></a>( const char *description, const char *patientID, int yearOfBirth, int monthOfBirth, int dayOfBirth, Gender gender );
+<dd>void <a href="DQEmgData.html#void_setPatientDescription(const_char_*newDescription)$"><font color=green>setPatientDescription</font></a>(const char *newDescription);
+<dd>const char *<a href="DQEmgData.html#const_char_*getPatientDescription()_const$"><font color=green>getPatientDescription</font></a>() const;
+<dd>void <a href="DQEmgData.html#void_setPatientID(const_char_*newID)$"><font color=green>setPatientID</font></a>(const char *newID);
+<dd>const char *<a href="DQEmgData.html#const_char_*getPatientID()_const$"><font color=green>getPatientID</font></a>() const;
+<dd>int <a href="DQEmgData.html#int_setPatientDateOfBirth(_int_yearOfBirth,_int_monthOfBirth,_int_dayOfBirth_)$"><font color=green>setPatientDateOfBirth</font></a>( int yearOfBirth, int monthOfBirth, int dayOfBirth );
+<dd>int <a href="DQEmgData.html#int_getPatientDateOfBirth(_unsigned_long_*year,_unsigned_long_*month,_unsigned_long_*day_)_const$"><font color=green>getPatientDateOfBirth</font></a>( unsigned long *year, unsigned long *month, unsigned long *day ) const;
+<dd>long <a href="DQEmgData.html#long_getPatientJulianDateOfBirth()_const$"><font color=green>getPatientJulianDateOfBirth</font></a>() const;
+<dd>void <a href="DQEmgData.html#void_setPatientGender(Gender_gender)$"><font color=green>setPatientGender</font></a>(Gender gender);
+<dd>int <a href="DQEmgData.html#int_getPatientGender()_const$"><font color=green>getPatientGender</font></a>() const;
+<dd>void <a href="DQEmgData.html#void_setMuscleDescription(const_char_*newDescription)$"><font color=green>setMuscleDescription</font></a>(const char *newDescription);
+<dd>const char *<a href="DQEmgData.html#const_char_*getMuscleDescription()_const$"><font color=green>getMuscleDescription</font></a>() const;
+<dd>void <a href="DQEmgData.html#void_setMuscleSide(Side_laterality)$"><font color=green>setMuscleSide</font></a>(Side laterality);
+<dd>int <a href="DQEmgData.html#int_getMuscleSide()_const$"><font color=green>getMuscleSide</font></a>() const;
+<dd>void <a href="DQEmgData.html#void_setGeneralDescription(const_char_*newDescription)$"><font color=green>setGeneralDescription</font></a>(const char *newDescription);
+<dd>const char *<a href="DQEmgData.html#const_char_*getGeneralDescription()_const$"><font color=green>getGeneralDescription</font></a>() const;
+<dd>void <a href="DQEmgData.html#void_setAcquisitionTime(time_t_newTime)$"><font color=green>setAcquisitionTime</font></a>(time_t newTime);
+<dd>time_t <a href="DQEmgData.html#time_t_getAcquisitionTime()_const$"><font color=green>getAcquisitionTime</font></a>() const;
+<dd>unsigned char <a href="DQEmgData.html#unsigned_char_getNumChannels()_const$"><font color=green>getNumChannels</font></a>() const;
+<dd>int <a href="DQEmgData.html#int_addChannel(DQEmgChannelData_*newChannel)$"><font color=green>addChannel</font></a>(<a href="DQEmgChannelData.html" target=_top>DQEmgChannelData</a> *newChannel);
+<dd><a href="DQEmgChannelData.html" target=_top>DQEmgChannelData</a> *<a href="DQEmgData.html#DQEmgChannelData_*getChannel(unsigned_char_index)_const$"><font color=green>getChannel</font></a>(unsigned char index) const;
+<dd>void <a href="DQEmgData.html#void_setContractionType(Contraction_contractionType)$"><font color=green>setContractionType</font></a>(Contraction contractionType);
+<dd>int <a href="DQEmgData.html#int_getContractionType()$"><font color=green>getContractionType</font></a>();
+<dd>int <a href="DQEmgData.html#int_isEvoked()$"><font color=green>isEvoked</font></a>();
+<dd>void <a href="DQEmgData.html#void_setCmapStored(int_fStored)$"><font color=green>setCmapStored</font></a>(int fStored);
+<dd>int <a href="DQEmgData.html#int_isCmapStored()$"><font color=green>isCmapStored</font></a>();
+<dd>void <a href="DQEmgData.html#void_set_mSmupStored(int_fStored)$"><font color=green>set_mSmupStored</font></a>(int fStored);
+<dd>int <a href="DQEmgData.html#int_is_mSmupStored()$"><font color=green>is_mSmupStored</font></a>();
+<dd>const char *<a href="DQEmgData.html#const_char_*getFileName()_const$"><font color=green>getFileName</font></a>() const;
+<dd>void <a href="DQEmgData.html#void_setFileName(const_char_*newFileName)$"><font color=green>setFileName</font></a>(const char *newFileName);
+<dd>int <a href="DQEmgData.html#int_load(const_char_*filename)$"><font color=green>load</font></a>(const char *filename);
+<dd>int <a href="DQEmgData.html#int_store(const_char_*filename)$"><font color=green>store</font></a>(const char *filename);
+<dd>void <a href="DQEmgData.html#void_clear()$"><font color=green>clear</font></a>();
+<dd>void <a href="DQEmgData.html#void_dump(FILE_*fp,_int_dumpChannelData_)$"><font color=green>dump</font></a>(FILE *fp, int dumpChannelData );
+<dd>int <a href="DQEmgData.html#int_getError()_const$"><font color=green>getError</font></a>() const;
+<dd>char *<a href="DQEmgData.html#char_*getErrorMessage(int_errorNumber)_const$"><font color=green>getErrorMessage</font></a>(int errorNumber) const;
+<dt><strong>protected:</strong>
+</dl>
+<p>Back to the <a href="#topofdoc">top</a> of  DQEmgData<p>
+<a name="parents"><hr><p></p></a>
+<h2>Ancestors</h2>
+Class does not inherit from any other class.<p>
+<p>Back to the <a href="#topofdoc">top</a> of  DQEmgData<p>
+<a name="children"><hr><p></p></a>
+<h2>Descendants</h2>
+Class is not inherited by any others.<p>
+<p>Back to the <a href="#topofdoc">top</a> of  DQEmgData<p>
+<hr><p></p>
+Generated from source by the <i><a href="http://www.stratasys.com/software/cocoon/index.htm">Cocoon</a></i> utilities on Thu Jan 15 07:27:46 2004
+.<p>
+<address>Report <a href="mailto:jkotula@vitalimages.com">problems</a> to jkotula@vitalimages.com</address>
+</body></html>

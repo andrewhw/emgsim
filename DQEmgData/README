@@ -1,0 +1,43 @@
+
+This data file implemtation is designed to be forward/backward
+compatible with new versions.
+
+Docs for the use of this spec are in the "docs" directory, in
+HTML and text formats.
+
+
+Coding style in this project is as follows:
+
+  - 8-space tabs with 4-space indent
+
+  - all private data/function members names end with a '_'.
+
+  - Types begin with a capital, variables/functions do not
+
+  - Every function in the public interface must have
+    a full descriptive comment in the form:
+
+    ////////////////////////////////////////
+    // Description of function
+    int func();
+
+    The row of '///' characters allows the associated
+    doc files to be built using the cocoon utilities.
+
+
+NOTE:
+In order to maintain the forward/backward compatibility, new
+data elements can only be introduced at the end of the existing
+list.  To do otherwise will completely break the ability of
+earlier versions to read later data files.
+
+
+
+Debugging note: Sat Jan 10 19:38:23 EST 2004
+
+It appears as though things really went off the rails at v1.24,
+where onset_ thorugh end_ we placed in ahead of channelDescription_.
+
+
+PatientId _should_ be after the contraction type!
+

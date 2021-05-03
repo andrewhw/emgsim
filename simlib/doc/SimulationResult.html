@@ -1,0 +1,241 @@
+<html><head><title>SimulationResult Documentation</title></head>
+<body><h1>
+<a name="topofdoc"><img src=coclogo.gif>SimulationResult</a></h1>
+<dl>
+<dd>    
+    A wrapper for all the result data from a simulator run.
+    <p>
+    This class will contain all the resulting data for a simulation
+    run including:
+    <ul>
+    <li>The EMG signal, via <a href="#DQEmgData_*getEmgData()_const$">getEmgData</a>()</li>
+    <li>Motor unit and muscle fibre data, via <a href="#MuscleData_*getMuscleData()_const$">getMuscleData</a>()</li>
+    <li><a href="Muap.html" target=_top>Muap</a> structures, via <a href="#const_Muap_*getMuap(int_index)$">getMuap</a>()</li>
+    </ul>
+</dl>
+<hr><p></p>
+<p><strong>[ 
+<a href="SimulationLibrary.html">SimulationLibrary</a> | 
+<a href="Simulator.h">Source</a> | 
+<a href="/keyweb.html">Keywords</a> | 
+<a href="#aag">Summary</a> | <a href="#parents">Ancestors</a> | <a href="#flat">All Members</a> | <a href="#children">Descendants</a>  ]</strong><p>
+<h2><a name="quickind">Quick Index</a></h2>
+<dl>
+</dl>
+<a name="aag"><hr><p></p></a><h2>Class Summary</h2>
+class SimulationResult
+
+<br>{
+<br><i><b>public</b></i>:
+<dl>
+<dd>~<a href="SimulationResult.html#~SimulationResult()$"><font color=green>SimulationResult</font></a>();
+<dd>int <a href="SimulationResult.html#int_getErrorState()_const$"><font color=green>getErrorState</font></a>() const;
+<dd>const char *<a href="SimulationResult.html#const_char_*getErrorMessage()_const$"><font color=green>getErrorMessage</font></a>() const;
+<dd>int <a href="SimulationResult.html#int_getFileId()_const$"><font color=green>getFileId</font></a>() const;
+<dd>DQEmgData *<a href="SimulationResult.html#DQEmgData_*getEmgData()_const$"><font color=green>getEmgData</font></a>() const;
+<dd><a href="MuscleData.html" target=_top>MuscleData</a> *<a href="SimulationResult.html#MuscleData_*getMuscleData()_const$"><font color=green>getMuscleData</font></a>() const;
+<dd>int <a href="SimulationResult.html#int_getNumMuaps()_const$"><font color=green>getNumMuaps</font></a>() const;
+<dd>void <a href="SimulationResult.html#void_freeMuap(int_index)$"><font color=green>freeMuap</font></a>(int index);
+<dd>void <a href="SimulationResult.html#void_freeMuapList()$"><font color=green>freeMuapList</font></a>();
+<dd>const <a href="Muap.html" target=_top>Muap</a> *<a href="SimulationResult.html#const_Muap_*getMuap(int_index)$"><font color=green>getMuap</font></a>(int index);
+<dd><a href="Muap.html" target=_top>Muap</a> ** <a href="SimulationResult.html#Muap_**_getMuapList()$"><font color=green>getMuapList</font></a>();
+<dd>const char *<a href="SimulationResult.html#const_char_*getOutputDirectory()$"><font color=green>getOutputDirectory</font></a>();
+<dd><strong>static</strong> const int <a href="SimulationResult.html#const_int_PRINT_ALL_DATA$"><font color=green>PRINT_ALL_DATA</font></a>;
+<dd><strong>static</strong> const int <a href="SimulationResult.html#const_int_PRINT_EMG_DATA$"><font color=green>PRINT_EMG_DATA</font></a>;
+<dd><strong>static</strong> const int <a href="SimulationResult.html#const_int_PRINT_MUAP_DATA$"><font color=green>PRINT_MUAP_DATA</font></a>;
+<dd><strong>static</strong> const int <a href="SimulationResult.html#const_int_PRINT_MUSCLE_DATA$"><font color=green>PRINT_MUSCLE_DATA</font></a>;
+<dd>void <a href="SimulationResult.html#void_dump(_FILE_*fp,_int_flags_)$"><font color=green>dump</font></a>( FILE *fp, int flags );
+</dl>
+<i><b>protected</b></i>:
+<dl>
+<dd>void <a href="SimulationResult.html#void_setFileId(int_id)$"><font color=green>setFileId</font></a>(int id);
+<dd>void <a href="SimulationResult.html#void_setState(int_error)$"><font color=green>setState</font></a>(int error);
+</dl>
+}; // SimulationResult <p>
+<p>Back to the <a href="#topofdoc">top</a> of  <i>SimulationResult</i><p>
+<a name="~SimulationResult()$"><hr><p></p><h3>~SimulationResult();</h3></a>
+       Destroy the SimulationResult object
+<p><pre>
+    ~SimulationResult();
+</pre>
+<br><p>Back to the <a href="#topofdoc">top</a> of  <i> SimulationResult </i> <p>
+<a name="int_getErrorState()_const$"><hr><p></p><h3>int getErrorState() const;</h3></a>
+       Returns 0 if the run was successful, and non-zero if there
+       was a failure.  See <a href="#const_char_*getErrorMessage()_const$">getErrorMessage</a>() for a description of
+       the failure
+<p><pre>
+    int <a href="#int_getErrorState()_const$">getErrorState</a>() const;
+</pre>
+<br><p>Back to the <a href="#topofdoc">top</a> of  <i> SimulationResult </i> <p>
+<a name="const_char_*getErrorMessage()_const$"><hr><p></p><h3>const char *getErrorMessage() const;</h3></a>
+       Returns an error message describing the failure for cases
+       where <a href="#int_getErrorState()_const$">getErrorState</a>() returns a non-zero value
+<p><pre>
+    const char *<a href="#const_char_*getErrorMessage()_const$">getErrorMessage</a>() const;
+</pre>
+<br><p>Back to the <a href="#topofdoc">top</a> of  <i> SimulationResult </i> <p>
+<a name="int_getFileId()_const$"><hr><p></p><h3>int getFileId() const;</h3></a>
+       Get the file id.  This is the value used to tag the result
+       files in the output directory (contration<ID>.dat, <i>et cetera</i>).
+<p><pre>
+    int <a href="#int_getFileId()_const$">getFileId</a>() const;
+</pre>
+<br><p>Back to the <a href="#topofdoc">top</a> of  <i> SimulationResult </i> <p>
+<a name="DQEmgData_*getEmgData()_const$"><hr><p></p><h3>DQEmgData *getEmgData() const;</h3></a>
+       Get the DQEmgData object which describes the EMG signal generated.
+       <p>
+       Note that the single DQEmgData object contains all the channels
+       (micro and macro) of data collected.
+<p><pre>
+    DQEmgData *<a href="#DQEmgData_*getEmgData()_const$">getEmgData</a>() const;
+</pre>
+<br><p>Back to the <a href="#topofdoc">top</a> of  <i> SimulationResult </i> <p>
+<a name="MuscleData_*getMuscleData()_const$"><hr><p></p><h3>MuscleData *getMuscleData() const;</h3></a>
+       Get the <a href="MuscleData.html" target=_top>MuscleData</a> object describing the muscle layout and fibre
+       assignments used to generate the MFAPs.
+       <p>
+       Note that the single <a href="MuscleData.html" target=_top>MuscleData</a> structure contains all the info
+       about the muscle layout.
+<p><pre>
+    <a href="MuscleData.html" target=_top>MuscleData</a> *<a href="#MuscleData_*getMuscleData()_const$">getMuscleData</a>() const;
+</pre>
+<br><p>Back to the <a href="#topofdoc">top</a> of  <i> SimulationResult </i> <p>
+<a name="int_getNumMuaps()_const$"><hr><p></p><h3>int getNumMuaps() const;</h3></a>
+       Returns the number of <a href="Muap.html" target=_top>Muap</a> structures this result contains
+<p><pre>
+    int <a href="#int_getNumMuaps()_const$">getNumMuaps</a>() const;
+</pre>
+<br><p>Back to the <a href="#topofdoc">top</a> of  <i> SimulationResult </i> <p>
+<a name="void_freeMuap(int_index)$"><hr><p></p><h3>void freeMuap(int index);</h3></a>
+       Frees a <a href="Muap.html" target=_top>Muap</a> allocated in <a href="#const_Muap_*getMuap(int_index)$">getMuap</a>(int index) or <a href="#Muap_**_getMuapList()$">getMuapList</a>()
+<p><pre>
+    void <a href="#void_freeMuap(int_index)$">freeMuap</a>(int index);
+</pre>
+<br><p>Back to the <a href="#topofdoc">top</a> of  <i> SimulationResult </i> <p>
+<a name="void_freeMuapList()$"><hr><p></p><h3>void freeMuapList();</h3></a>
+       Frees all Muaps allocated in <a href="#const_Muap_*getMuap(int_index)$">getMuap</a>(int index) or <a href="#Muap_**_getMuapList()$">getMuapList</a>()
+<p><pre>
+    void <a href="#void_freeMuapList()$">freeMuapList</a>();
+</pre>
+<br><p>Back to the <a href="#topofdoc">top</a> of  <i> SimulationResult </i> <p>
+<a name="const_Muap_*getMuap(int_index)$"><hr><p></p><h3>const Muap *getMuap(int index);</h3></a>
+       Returns a particular <a href="Muap.html" target=_top>Muap</a> structure from 0 to <a href="#int_getNumMuaps()_const$">getNumMuaps</a>().
+       Each of these structures will contain both the resultant
+       MUAP template, as well as each individual MFAP they are composed
+       of.
+<p>
+       See also <a href="#void_freeMuap(int_index)$">freeMuap</a>(int index)
+<p><pre>
+    const <a href="Muap.html" target=_top>Muap</a> *<a href="#const_Muap_*getMuap(int_index)$">getMuap</a>(int index);
+</pre>
+<br><p>Back to the <a href="#topofdoc">top</a> of  <i> SimulationResult </i> <p>
+<a name="Muap_**_getMuapList()$"><hr><p></p><h3>Muap ** getMuapList();</h3></a>
+       Returns an array of <a href="Muap.html" target=_top>Muap</a> pointers.
+       <p>
+       The length of the array is available through the
+       <a href="#int_getNumMuaps()_const$">getNumMuaps</a>() method.
+       <p>
+       Each of these structures will contain both the resultant
+       MUAP template, as well as each individual MFAP they are composed
+       of.
+<p><pre>
+    <a href="Muap.html" target=_top>Muap</a> ** <a href="#Muap_**_getMuapList()$">getMuapList</a>();
+</pre>
+<br><p>Back to the <a href="#topofdoc">top</a> of  <i> SimulationResult </i> <p>
+<a name="const_char_*getOutputDirectory()$"><hr><p></p><h3>const char *getOutputDirectory();</h3></a>
+       Get the directory in which the output is saved.
+<p><pre>
+    const char *<a href="#const_char_*getOutputDirectory()$">getOutputDirectory</a>();
+</pre>
+<br><p>Back to the <a href="#topofdoc">top</a> of  <i> SimulationResult </i> <p>
+<a name="const_int_PRINT_ALL_DATA$"><hr><p></p><h3>const int PRINT_ALL_DATA;</h3></a>
+       dump all the possible data
+<p><pre>
+    const static int PRINT_ALL_DATA;
+</pre>
+<br><p>Back to the <a href="#topofdoc">top</a> of  <i> SimulationResult </i> <p>
+<a name="const_int_PRINT_EMG_DATA$"><hr><p></p><h3>const int PRINT_EMG_DATA;</h3></a>
+       dump the EMG data when printing (default - enabled)
+<p><pre>
+    const static int PRINT_EMG_DATA;
+</pre>
+<br><p>Back to the <a href="#topofdoc">top</a> of  <i> SimulationResult </i> <p>
+<a name="const_int_PRINT_MUAP_DATA$"><hr><p></p><h3>const int PRINT_MUAP_DATA;</h3></a>
+       dump the <a href="Muap.html" target=_top>Muap</a> data when printing (default - enabled)
+<p><pre>
+    const static int PRINT_MUAP_DATA;
+</pre>
+<br><p>Back to the <a href="#topofdoc">top</a> of  <i> SimulationResult </i> <p>
+<a name="const_int_PRINT_MUSCLE_DATA$"><hr><p></p><h3>const int PRINT_MUSCLE_DATA;</h3></a>
+       dump the muscle data when printing (default - disabled)
+<p><pre>
+    const static int PRINT_MUSCLE_DATA;
+</pre>
+<br><p>Back to the <a href="#topofdoc">top</a> of  <i> SimulationResult </i> <p>
+<a name="void_dump(_FILE_*fp,_int_flags_)$"><hr><p></p><h3>void dump( FILE *fp, int flags );</h3></a>
+       Print out the contents to the file pointer for debugging
+       purposes.
+       <p>
+       See flags:
+       <ul>
+       <li>PRINT_EMG_DATA</li>
+       <li>PRINT_MUAP_DATA</li>
+       <li>PRINT_MUSCLE_DATA</li>
+       <ul>
+<p><pre>
+    void <a href="#void_dump(_FILE_*fp,_int_flags_)$">dump</a>(
+                FILE *fp,
+                int flags = PRINT_EMG_DATA|PRINT_MUAP_DATA
+            );
+</pre>
+<br><p>Back to the <a href="#topofdoc">top</a> of  <i> SimulationResult </i> <p>
+<a name="void_setFileId(int_id)$"><hr><p></p><h3>void setFileId(int id);</h3></a>
+       Set the current file id.  Used within the <a href="Simulator.html" target=_top>Simulator</a>::run() method
+<p><pre>
+    void <a href="#void_setFileId(int_id)$">setFileId</a>(int id);
+</pre>
+<br><p>Back to the <a href="#topofdoc">top</a> of  <i> SimulationResult </i> <p>
+<a name="void_setState(int_error)$"><hr><p></p><h3>void setState(int error);</h3></a>
+       Set the error state.  Used within the <a href="Simulator.html" target=_top>Simulator</a>::run() method.
+<p><pre>
+    void <a href="#void_setState(int_error)$">setState</a>(int error);
+</pre>
+<br><p>Back to the <a href="#topofdoc">top</a> of  <i> SimulationResult </i> <p>
+<a name="flat"><hr><p></p></a>
+<h2>All Members</h2>
+<dl>
+<dt><strong>public:</strong>
+<dd>int <a href="SimulationResult.html#int_getErrorState()_const$"><font color=green>getErrorState</font></a>() const;
+<dd>const char *<a href="SimulationResult.html#const_char_*getErrorMessage()_const$"><font color=green>getErrorMessage</font></a>() const;
+<dd>int <a href="SimulationResult.html#int_getFileId()_const$"><font color=green>getFileId</font></a>() const;
+<dd>DQEmgData *<a href="SimulationResult.html#DQEmgData_*getEmgData()_const$"><font color=green>getEmgData</font></a>() const;
+<dd><a href="MuscleData.html" target=_top>MuscleData</a> *<a href="SimulationResult.html#MuscleData_*getMuscleData()_const$"><font color=green>getMuscleData</font></a>() const;
+<dd>int <a href="SimulationResult.html#int_getNumMuaps()_const$"><font color=green>getNumMuaps</font></a>() const;
+<dd>void <a href="SimulationResult.html#void_freeMuap(int_index)$"><font color=green>freeMuap</font></a>(int index);
+<dd>void <a href="SimulationResult.html#void_freeMuapList()$"><font color=green>freeMuapList</font></a>();
+<dd>const <a href="Muap.html" target=_top>Muap</a> *<a href="SimulationResult.html#const_Muap_*getMuap(int_index)$"><font color=green>getMuap</font></a>(int index);
+<dd><a href="Muap.html" target=_top>Muap</a> ** <a href="SimulationResult.html#Muap_**_getMuapList()$"><font color=green>getMuapList</font></a>();
+<dd>const char *<a href="SimulationResult.html#const_char_*getOutputDirectory()$"><font color=green>getOutputDirectory</font></a>();
+<dd><strong>static</strong> const int <a href="SimulationResult.html#const_int_PRINT_ALL_DATA$"><font color=green>PRINT_ALL_DATA</font></a>;
+<dd><strong>static</strong> const int <a href="SimulationResult.html#const_int_PRINT_EMG_DATA$"><font color=green>PRINT_EMG_DATA</font></a>;
+<dd><strong>static</strong> const int <a href="SimulationResult.html#const_int_PRINT_MUAP_DATA$"><font color=green>PRINT_MUAP_DATA</font></a>;
+<dd><strong>static</strong> const int <a href="SimulationResult.html#const_int_PRINT_MUSCLE_DATA$"><font color=green>PRINT_MUSCLE_DATA</font></a>;
+<dd>void <a href="SimulationResult.html#void_dump(_FILE_*fp,_int_flags_)$"><font color=green>dump</font></a>( FILE *fp, int flags );
+<dt><strong>protected:</strong>
+<dd>void <a href="SimulationResult.html#void_setFileId(int_id)$"><font color=green>setFileId</font></a>(int id);
+<dd>void <a href="SimulationResult.html#void_setState(int_error)$"><font color=green>setState</font></a>(int error);
+</dl>
+<p>Back to the <a href="#topofdoc">top</a> of  SimulationResult<p>
+<a name="parents"><hr><p></p></a>
+<h2>Ancestors</h2>
+Class does not inherit from any other class.<p>
+<p>Back to the <a href="#topofdoc">top</a> of  SimulationResult<p>
+<a name="children"><hr><p></p></a>
+<h2>Descendants</h2>
+Class is not inherited by any others.<p>
+<p>Back to the <a href="#topofdoc">top</a> of  SimulationResult<p>
+<hr><p></p>
+Generated from source by the <i><a href="http://www.stratasys.com/software/cocoon/index.htm">Cocoon</a></i> utilities on Tue Jul 30 17:58:07 2002
+.<p>
+<address>Report <a href="mailto:jkotula@vitalimages.com">problems</a> to jkotula@vitalimages.com</address>
+</body></html>

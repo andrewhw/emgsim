@@ -1,0 +1,34 @@
+#!/bin/sh
+##	: createplotsinglemfap,v 1.1 2001/12/09 18:46:23 andrew Exp $
+##
+##	Build a plot file out of the log file specified
+##
+
+workfile=tmp-gp.$$
+
+echo "Creating master plot . . ."
+
+# set terminal postscript eps color
+
+#set output "jitter-master.png"
+#set terminal png large color
+cat > $workfile << __EOF__
+set title "Internal Jitter Correlation"
+set xlabel "Gaussian Value"
+set ylabel "Buffer Offset (ms)"
+set nokey
+set output "jitter-master.gif"
+set terminal gif medium size 1024,768
+__EOF__
+
+	COMMA=""
+	PLOTLINE="plot"
+	for f in ../simulator/data/sim*/muscle/eemg/jitter-buffer*.jlg
+	do
+	    PLOTLINE="${PLOTLINE}${COMMA} "'"'"${f}"'"'
+	    COMMA=","
+	done
+
+	echo "${PLOTLINE}" >> $workfile
+	echo "load \"$workfile\" " | gnuplot
+	rm $workfile

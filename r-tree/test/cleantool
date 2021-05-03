@@ -1,0 +1,7 @@
+#!/bin/sh
+
+rm -rf Debug
+rm -rf rtest-nomfc.plg
+rm -rf rtest-nomfc.opt
+rm -f debug-emgraw.txt jittercounts.txt
+

@@ -1,0 +1,4 @@
+#!/bin/sh
+
+cocoon -l SimulationLibrary
+mv *.gif *.html ../doc

@@ -1,0 +1,133 @@
+<html><head><title>Simulator Documentation</title></head>
+<body><h1>
+<a name="topofdoc"><img src=coclogo.gif>Simulator</a></h1>
+<dl>
+<dd>    
+    This object wraps up all the simulator functionality -- calling
+    run on this object will return a result object which can be used
+    to get all the data from a single simulator run.
+</dl>
+<hr><p></p>
+<p><strong>[ 
+<a href="SimulationLibrary.html">SimulationLibrary</a> | 
+<a href="Simulator.h">Source</a> | 
+<a href="/keyweb.html">Keywords</a> | 
+<a href="#aag">Summary</a> | <a href="#parents">Ancestors</a> | <a href="#flat">All Members</a> | <a href="#children">Descendants</a>  ]</strong><p>
+<h2><a name="quickind">Quick Index</a></h2>
+<dl>
+</dl>
+<a name="aag"><hr><p></p></a><h2>Class Summary</h2>
+class Simulator
+
+<br>{
+<br><i><b>public</b></i>:
+<dl>
+<dd><strong>static</strong> const int <a href="Simulator.html#const_int_FLAG_USE_LAST_STUDY$"><font color=green>FLAG_USE_LAST_STUDY</font></a>;
+<dd><a href="Simulator.html#Simulator()$"><font color=green>Simulator</font></a>();
+<dd>~<a href="Simulator.html#~Simulator()$"><font color=green>Simulator</font></a>();
+<dd>struct globals *<a href="Simulator.html#struct_globals_*initializeGlobals(const_char_*configFile_)$"><font color=green>initializeGlobals</font></a>(const char *configFile );
+<dd><a href="SimulationResult.html" target=_top>SimulationResult</a> *<a href="Simulator.html#SimulationResult_*run(int_flags_)$"><font color=green>run</font></a>(int flags );
+<dd><a href="SimulationResult.html" target=_top>SimulationResult</a> *<a href="Simulator.html#SimulationResult_*open(_const_char_*path,_int_contractionId_)$"><font color=green>open</font></a>( const char *path, int contractionId );
+<dd>const char *<a href="Simulator.html#const_char_*getConfigFileName()$"><font color=green>getConfigFileName</font></a>();
+<dd>int <a href="Simulator.html#int_setConfigFileName(const_char_*configFileName)$"><font color=green>setConfigFileName</font></a>(const char *configFileName);
+<dd><strong>static</strong> const char *<a href="Simulator.html#const_char_*sGetVersion()$"><font color=green>sGetVersion</font></a>();
+</dl>
+<i><b>protected</b></i>:
+<dl>
+</dl>
+}; // Simulator <p>
+<p>Back to the <a href="#topofdoc">top</a> of  <i>Simulator</i><p>
+<a name="const_int_FLAG_USE_LAST_STUDY$"><hr><p></p><h3>const int FLAG_USE_LAST_STUDY;</h3></a>
+       constant bitflag
+<p><pre>
+    static const int FLAG_USE_LAST_STUDY;
+</pre>
+<br><p>Back to the <a href="#topofdoc">top</a> of  <i> Simulator </i> <p>
+<a name="Simulator()$"><hr><p></p><h3>Simulator();</h3></a>
+       Constructor.
+<p><pre>
+    <a href="#Simulator()$">Simulator</a>();
+</pre>
+<br><p>Back to the <a href="#topofdoc">top</a> of  <i> Simulator </i> <p>
+<a name="~Simulator()$"><hr><p></p><h3>~Simulator();</h3></a>
+       Destroy the Simulator object
+<p><pre>
+    ~Simulator();
+</pre>
+<br><p>Back to the <a href="#topofdoc">top</a> of  <i> Simulator </i> <p>
+<a name="struct_globals_*initializeGlobals(const_char_*configFile_)$"><hr><p></p><h3>struct globals *initializeGlobals(const char *configFile );</h3></a>
+       Get a pointer to the global config structure, initializing
+       it from the given file, or the default file if none is given.
+<p>
+<p><pre>
+    struct globals *<a href="#struct_globals_*initializeGlobals(const_char_*configFile_)$">initializeGlobals</a>(const char *configFile = NULL);
+</pre>
+<br><p>Back to the <a href="#topofdoc">top</a> of  <i> Simulator </i> <p>
+<a name="SimulationResult_*run(int_flags_)$"><hr><p></p><h3>SimulationResult *run(int flags );</h3></a>
+       Run the simulator.  Possible flags are:
+       <ul>
+           <li>FLAG_USE_LAST_STUDY</li>
+           <li>FLAG_NEW_FIBRE_LAYOUT</li>
+       </ul>
+<p><pre>
+    <a href="SimulationResult.html" target=_top>SimulationResult</a> *<a href="#SimulationResult_*run(int_flags_)$">run</a>(int flags = 0x00);
+</pre>
+<br><p>Back to the <a href="#topofdoc">top</a> of  <i> Simulator </i> <p>
+<a name="SimulationResult_*open(_const_char_*path,_int_contractionId_)$"><hr><p></p><h3>SimulationResult *open( const char *path, int contractionId );</h3></a>
+       Run the simulator.  Possible flags are:
+       <ul>
+           <li>FLAG_USE_LAST_STUDY</li>
+           <li>FLAG_NEW_FIBRE_LAYOUT</li>
+       </ul>
+<p><pre>
+    <a href="SimulationResult.html" target=_top>SimulationResult</a> *<a href="#SimulationResult_*open(_const_char_*path,_int_contractionId_)$">open</a>(
+                const char *path,
+                int contractionId = 1
+            );
+</pre>
+<br><p>Back to the <a href="#topofdoc">top</a> of  <i> Simulator </i> <p>
+<a name="const_char_*getConfigFileName()$"><hr><p></p><h3>const char *getConfigFileName();</h3></a>
+       Get the config file name
+<p><pre>
+    const char *<a href="#const_char_*getConfigFileName()$">getConfigFileName</a>();
+</pre>
+<br><p>Back to the <a href="#topofdoc">top</a> of  <i> Simulator </i> <p>
+<a name="int_setConfigFileName(const_char_*configFileName)$"><hr><p></p><h3>int setConfigFileName(const char *configFileName);</h3></a>
+       Set the config file name
+<p><pre>
+    int <a href="#int_setConfigFileName(const_char_*configFileName)$">setConfigFileName</a>(const char *configFileName);
+</pre>
+<br><p>Back to the <a href="#topofdoc">top</a> of  <i> Simulator </i> <p>
+<a name="const_char_*sGetVersion()$"><hr><p></p><h3>const char *sGetVersion();</h3></a>
+       Get the simulator version id string
+<p><pre>
+    static const char *<a href="#const_char_*sGetVersion()$">sGetVersion</a>();
+</pre>
+<br><p>Back to the <a href="#topofdoc">top</a> of  <i> Simulator </i> <p>
+<a name="flat"><hr><p></p></a>
+<h2>All Members</h2>
+<dl>
+<dt><strong>public:</strong>
+<dd><strong>static</strong> const int <a href="Simulator.html#const_int_FLAG_USE_LAST_STUDY$"><font color=green>FLAG_USE_LAST_STUDY</font></a>;
+<dd>struct globals *<a href="Simulator.html#struct_globals_*initializeGlobals(const_char_*configFile_)$"><font color=green>initializeGlobals</font></a>(const char *configFile );
+<dd><a href="SimulationResult.html" target=_top>SimulationResult</a> *<a href="Simulator.html#SimulationResult_*run(int_flags_)$"><font color=green>run</font></a>(int flags );
+<dd><a href="SimulationResult.html" target=_top>SimulationResult</a> *<a href="Simulator.html#SimulationResult_*open(_const_char_*path,_int_contractionId_)$"><font color=green>open</font></a>( const char *path, int contractionId );
+<dd>const char *<a href="Simulator.html#const_char_*getConfigFileName()$"><font color=green>getConfigFileName</font></a>();
+<dd>int <a href="Simulator.html#int_setConfigFileName(const_char_*configFileName)$"><font color=green>setConfigFileName</font></a>(const char *configFileName);
+<dd><strong>static</strong> const char *<a href="Simulator.html#const_char_*sGetVersion()$"><font color=green>sGetVersion</font></a>();
+<dt><strong>protected:</strong>
+</dl>
+<p>Back to the <a href="#topofdoc">top</a> of  Simulator<p>
+<a name="parents"><hr><p></p></a>
+<h2>Ancestors</h2>
+Class does not inherit from any other class.<p>
+<p>Back to the <a href="#topofdoc">top</a> of  Simulator<p>
+<a name="children"><hr><p></p></a>
+<h2>Descendants</h2>
+Class is not inherited by any others.<p>
+<p>Back to the <a href="#topofdoc">top</a> of  Simulator<p>
+<hr><p></p>
+Generated from source by the <i><a href="http://www.stratasys.com/software/cocoon/index.htm">Cocoon</a></i> utilities on Tue Jul 30 17:58:07 2002
+.<p>
+<address>Report <a href="mailto:jkotula@vitalimages.com">problems</a> to jkotula@vitalimages.com</address>
+</body></html>

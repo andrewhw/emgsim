@@ -1,0 +1,19 @@
+#!/bin/sh
+
+FLAGS=""
+
+HOSTNAME=`hostname`
+case ${HOSTNAME} in
+emg*)
+	FLAGS=${FLAGS}"-DGSL_LIBRARY_INSTALLED"
+	;;
+gradhp-62*)
+	FLAGS=${FLAGS}"-DGSL_LIBRARY_INSTALLED"
+	;;
+sisyphus*)
+	FLAGS=${FLAGS}"-DGSL_LIBRARY_INSTALLED"
+	;;
+esac
+
+echo ${FLAGS}
+

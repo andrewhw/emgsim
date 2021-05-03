@@ -1,0 +1,6 @@
+#!/bin/sh
+
+if [ -f ../hostspec.cflags ]
+then
+    sh ../hostspec.cflags
+fi

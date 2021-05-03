@@ -1,0 +1,121 @@
+<html><head><title>MotorUnit Documentation</title></head>
+<body><h1>
+<a name="topofdoc"><img src=coclogo.gif>MotorUnit</a></h1>
+<dl>
+<dd>
+    This class defines the location and fibres for
+    a single motor unit.
+
+    See also <a href="MuscleFibre.html" target=_top>MuscleFibre</a> and <a href="MuscleData.html" target=_top>MuscleData</a>.
+</dl>
+<hr><p></p>
+<p><strong>[ 
+<a href="SimulationLibrary.html">SimulationLibrary</a> | 
+<a href="MuscleData.h">Source</a> | 
+<a href="/keyweb.html">Keywords</a> | 
+<a href="#aag">Summary</a> | <a href="#parents">Ancestors</a> | <a href="#flat">All Members</a> | <a href="#children">Descendants</a>  ]</strong><p>
+<h2><a name="quickind">Quick Index</a></h2>
+<dl>
+</dl>
+<a name="aag"><hr><p></p></a><h2>Class Summary</h2>
+class MotorUnit
+
+<br>{
+<br><i><b>public</b></i>:
+<dl>
+<dd><a href="MotorUnit.html#MotorUnit()$"><font color=green>MotorUnit</font></a>();
+<dd>~<a href="MotorUnit.html#~MotorUnit()$"><font color=green>MotorUnit</font></a>();
+<dd>int <a href="MotorUnit.html#int_getNumFibres()_const$"><font color=green>getNumFibres</font></a>() const;
+<dd><a href="MuscleFibre.html" target=_top>MuscleFibre</a> *<a href="MotorUnit.html#MuscleFibre_*getFibre(int_id)_const$"><font color=green>getFibre</font></a>(int id) const;
+<dd>int <a href="MotorUnit.html#int_getID()_const$"><font color=green>getID</font></a>() const;
+<dd>float <a href="MotorUnit.html#float_getDiameter()_const$"><font color=green>getDiameter</font></a>() const;
+<dd>float <a href="MotorUnit.html#float_getLocationRadius()_const$"><font color=green>getLocationRadius</font></a>() const;
+<dd>float <a href="MotorUnit.html#float_getLocationTheta()_const$"><font color=green>getLocationTheta</font></a>() const;
+<dd>int <a href="MotorUnit.html#int_addFibre(MuscleFibre_*newFibre)$"><font color=green>addFibre</font></a>(<a href="MuscleFibre.html" target=_top>MuscleFibre</a> *newFibre);
+</dl>
+<i><b>protected</b></i>:
+<dl>
+</dl>
+}; // MotorUnit <p>
+<p>Back to the <a href="#topofdoc">top</a> of  <i>MotorUnit</i><p>
+<a name="MotorUnit()$"><hr><p></p><h3>MotorUnit();</h3></a>
+           Create a muscle data object
+<p><pre>
+        <a href="#MotorUnit()$">MotorUnit</a>();
+</pre>
+<br><p>Back to the <a href="#topofdoc">top</a> of  <i> MotorUnit </i> <p>
+<a name="~MotorUnit()$"><hr><p></p><h3>~MotorUnit();</h3></a>
+           Destructor
+<p><pre>
+        ~MotorUnit();
+</pre>
+<br><p>Back to the <a href="#topofdoc">top</a> of  <i> MotorUnit </i> <p>
+<a name="int_getNumFibres()_const$"><hr><p></p><h3>int getNumFibres() const;</h3></a>
+           return the number of motor units recorded
+<p><pre>
+        int <a href="#int_getNumFibres()_const$">getNumFibres</a>() const;
+</pre>
+<br><p>Back to the <a href="#topofdoc">top</a> of  <i> MotorUnit </i> <p>
+<a name="MuscleFibre_*getFibre(int_id)_const$"><hr><p></p><h3>MuscleFibre *getFibre(int id) const;</h3></a>
+           return the number of motor units recorded
+<p><pre>
+        <a href="MuscleFibre.html" target=_top>MuscleFibre</a> *<a href="#MuscleFibre_*getFibre(int_id)_const$">getFibre</a>(int id) const;
+</pre>
+<br><p>Back to the <a href="#topofdoc">top</a> of  <i> MotorUnit </i> <p>
+<a name="int_getID()_const$"><hr><p></p><h3>int getID() const;</h3></a>
+           return the motor unit id we were generated with
+<p><pre>
+        int <a href="#int_getID()_const$">getID</a>() const;
+</pre>
+<br><p>Back to the <a href="#topofdoc">top</a> of  <i> MotorUnit </i> <p>
+<a name="float_getDiameter()_const$"><hr><p></p><h3>float getDiameter() const;</h3></a>
+           return the motor unit territory diameter
+<p><pre>
+        float <a href="#float_getDiameter()_const$">getDiameter</a>() const;
+</pre>
+<br><p>Back to the <a href="#topofdoc">top</a> of  <i> MotorUnit </i> <p>
+<a name="float_getLocationRadius()_const$"><hr><p></p><h3>float getLocationRadius() const;</h3></a>
+           return the motor unit territory radial position in the muscle
+<p><pre>
+        float <a href="#float_getLocationRadius()_const$">getLocationRadius</a>() const;
+</pre>
+<br><p>Back to the <a href="#topofdoc">top</a> of  <i> MotorUnit </i> <p>
+<a name="float_getLocationTheta()_const$"><hr><p></p><h3>float getLocationTheta() const;</h3></a>
+           return the motor unit territory theta co-ordinate in the muscle
+<p><pre>
+        float <a href="#float_getLocationTheta()_const$">getLocationTheta</a>() const;
+</pre>
+<br><p>Back to the <a href="#topofdoc">top</a> of  <i> MotorUnit </i> <p>
+<a name="int_addFibre(MuscleFibre_*newFibre)$"><hr><p></p><h3>int addFibre(MuscleFibre *newFibre);</h3></a>
+           add a new fibre to this MU
+<p><pre>
+        int <a href="#int_addFibre(MuscleFibre_*newFibre)$">addFibre</a>(<a href="MuscleFibre.html" target=_top>MuscleFibre</a> *newFibre);
+</pre>
+<br><p>Back to the <a href="#topofdoc">top</a> of  <i> MotorUnit </i> <p>
+<a name="flat"><hr><p></p></a>
+<h2>All Members</h2>
+<dl>
+<dt><strong>public:</strong>
+<dd>int <a href="MotorUnit.html#int_getNumFibres()_const$"><font color=green>getNumFibres</font></a>() const;
+<dd><a href="MuscleFibre.html" target=_top>MuscleFibre</a> *<a href="MotorUnit.html#MuscleFibre_*getFibre(int_id)_const$"><font color=green>getFibre</font></a>(int id) const;
+<dd>int <a href="MotorUnit.html#int_getID()_const$"><font color=green>getID</font></a>() const;
+<dd>float <a href="MotorUnit.html#float_getDiameter()_const$"><font color=green>getDiameter</font></a>() const;
+<dd>float <a href="MotorUnit.html#float_getLocationRadius()_const$"><font color=green>getLocationRadius</font></a>() const;
+<dd>float <a href="MotorUnit.html#float_getLocationTheta()_const$"><font color=green>getLocationTheta</font></a>() const;
+<dd>int <a href="MotorUnit.html#int_addFibre(MuscleFibre_*newFibre)$"><font color=green>addFibre</font></a>(<a href="MuscleFibre.html" target=_top>MuscleFibre</a> *newFibre);
+<dt><strong>protected:</strong>
+</dl>
+<p>Back to the <a href="#topofdoc">top</a> of  MotorUnit<p>
+<a name="parents"><hr><p></p></a>
+<h2>Ancestors</h2>
+Class does not inherit from any other class.<p>
+<p>Back to the <a href="#topofdoc">top</a> of  MotorUnit<p>
+<a name="children"><hr><p></p></a>
+<h2>Descendants</h2>
+Class is not inherited by any others.<p>
+<p>Back to the <a href="#topofdoc">top</a> of  MotorUnit<p>
+<hr><p></p>
+Generated from source by the <i><a href="http://www.stratasys.com/software/cocoon/index.htm">Cocoon</a></i> utilities on Tue Jul 30 17:58:07 2002
+.<p>
+<address>Report <a href="mailto:jkotula@vitalimages.com">problems</a> to jkotula@vitalimages.com</address>
+</body></html>

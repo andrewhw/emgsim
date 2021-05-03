@@ -1,0 +1,4 @@
+#!/bin/sh
+
+cocoon -l DQEmgDataFile
+mv *.gif *.html ../docs

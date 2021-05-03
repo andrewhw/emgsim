@@ -1,0 +1,117 @@
+##
+## $Id: Makefile.PC 2 2002-07-06 14:36:57Z andrew $
+##
+
+
+CC					=	cl
+MAKE				=	nmake
+MAKEDEPEND			=	makedepend
+MAKEDEPENDRULES		=	MakeDepend.rules
+SHELL				=	/bin/sh
+
+EXE_1				=	readprm_jitter
+EXE_2				=	readprm_jiggle
+EXELIST				=	$(EXE_1).exe $(EXE_2).exe
+
+DEFINES				=	-DDEBUG \
+						-DTCL_MEM_DEBUG \
+						-DASSERT_MESG \
+						-DUSE_NUMERICAL_RECIPES_RANDOM \
+						-DOS_STATIC \
+						-DEXTENDED_DIRECTORY_NAMES
+
+
+INCLUDEFLAGS		=	-I. -Icommon/include -Iemg-tools/include
+
+CFLAGS				=	\
+						$(DEFINES) $(INCLUDEFLAGS) \
+						-DCRTAPI1=_cdecl -DCRTAPI2=_cdecl -nologo \
+						-D_X86_=1 -D_WINNT -D_WIN32_WINNT=0x0400 \
+						-D_WIN32_IE=0x0300 -DWINVER=0x0400 \
+						-DWIN32 -DWIN32 -D_WIN32
+
+COMMONLIB			=	common/lib/libcommon.lib
+
+OBJS_COMMON			=	\
+					emg-tools/src/prm.obj
+
+OBJS_1				=	\
+					main_readJitter.obj
+
+OBJS_2				=	\
+					main_readJiggle.obj
+
+
+all	: $(EXELIST)
+
+
+.SUFFIXES: .obj .c .cpp
+
+.c.obj	:
+	$(CC) $(CFLAGS) -c $*.c /Fo$*.obj
+
+.cpp.obj	:
+	$(CC) $(CFLAGS) -c $*.cpp /Fo$*.obj
+
+
+##
+##	Targets begin here
+##
+
+$(EXE_1).exe : $(OBJS_COMMON) $(OBJS_1) $(COMMONLIB)
+	link /NODEFAULTLIB /INCREMENTAL:NO /PDB:NONE /RELEASE /NOLOGO \
+		-subsystem:console,4.0 -out:$(EXE_1).exe \
+		$(OBJS_COMMON) $(OBJS_1) \
+		libc.lib oldnames.lib kernel32.lib  ws2_32.lib \
+		mswsock.lib advapi32.lib\
+		$(COMMONLIB)
+
+$(EXE_2).exe : $(OBJS_COMMON) $(OBJS_2) $(COMMONLIB)
+	link /NODEFAULTLIB /INCREMENTAL:NO /PDB:NONE /RELEASE /NOLOGO \
+		-subsystem:console,4.0 -out:$(EXE_2).exe \
+		$(OBJS_COMMON) $(OBJS_2) \
+		libc.lib oldnames.lib kernel32.lib  ws2_32.lib \
+		mswsock.lib advapi32.lib\
+		$(COMMONLIB)
+
+
+# We have to cd into the common dir, and then cd back out, as the PC
+# make util preserves the current directory across commands
+
+$(COMMONLIB) :
+	- cd common
+	- $(MAKE) -f Makefile.PC
+	- cd ..
+
+clean :
+	- rm -f $(OBJS_COMMON) $(OBJS_1) $(OBJS_2)
+	- rm -f $(EXELIST)
+
+allclean : clean
+	- cd common
+	- $(MAKE) -f Makefile.PC clean
+
+tags : dummy
+	- ctags *.cpp common/*/*.c emg-tools/*/*.cpp
+
+
+## this target is here for 'always do' rules to depend on
+
+dummy :
+
+
+## do nothing for MakeDepend on the PC
+
+depend :
+
+
+##
+## $Log$
+## Revision 1.1  2002/07/06 14:36:56  andrew
+## o Initial check-in of the R-tree code
+##
+## Revision 1.2  2001/12/18 01:29:59  andrew
+## ...
+##
+##
+##

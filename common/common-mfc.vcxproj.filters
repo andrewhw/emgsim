@@ -1,0 +1,275 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{6be067c5-bd1a-43ed-9fa3-96dce91a45c9}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;rc;def;r;odl;idl;hpj;bat</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{abcaf83d-e39d-4dbc-be9f-cd26ae542b75}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="math\acceleration.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="math\adjust.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="file\attvalue.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="math\calcPeakToPeak.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="math\chords.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="file\cleanfile.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="file\configuration.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="path\convertPath.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="file\copyfile.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="file\csvtools.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="dbg\debug.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="error\Derror.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="path\dirlist.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="math\factorial.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="math\fft.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="path\fileExists.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="math\filtfilt.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="path\fopenpath.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="math\functions.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="os\getOsVersion.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="intrretry\i_close.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="intrretry\i_open.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="intrretry\i_rdwr.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="intrretry\i_stat.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="io\io_utils.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="alloc\isort.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="log\log.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="alloc\lsList.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="alloc\memlist.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="string\niceDouble.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="path\openpath.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="alloc\panic.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="file\plotBuffer.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="math\random.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="gnuplot\simpleplots.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="string\slnprintf.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="interpolate\spline.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="string\strbasename.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="string\strcase.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="string\strconcat.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="string\strdup.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="error\strerror.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="string\strisblank.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="string\strndup.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="string\strqconcat.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="string\strsplit.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="string\strTimeDelta.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="string\strTimeString.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="string\strtruncblank.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="string\strunctrl.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="string\strUnique.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="alloc\tclCkalloc.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="file\tempfile.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="timing\timer.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="file\tokenizer.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="gnuplot\tools.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\attvalfile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\bitstring.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\commandline.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\configurationtools.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\dir_defaults.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\error.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\filetools.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\filtertools.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\io_utils.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\listalloc.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\localstrings.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\log.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\massert.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\mathtools.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\msgdbids.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\msgir.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\msgisort.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\msgstrerror.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NRinterpolate.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\os_defs.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\os_names.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\os_types.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\pathtools.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\plottools.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\protodefns.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\random.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\reporttimer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\stringtools.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\tclCkalloc.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\tokens.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

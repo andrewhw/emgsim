@@ -1,0 +1,70 @@
+Structure of the PRM Data File
+==============================
+
+The PRM data file is a TEXT based file (DOS format), where logical
+records are divided by LINES.
+
+There is a header line, followed by PARAMETER information
+for each TRAIN.
+
+After the PARAMETER information, there is global
+TRAIN information.
+
+
+HEADER INFORMATION
+-=-=-=-=-=-=-=-=-=
+    FLOAT	: perCentMVC_
+    INTEGER	: numberOfTrains_
+    			: a TRAIN describes a single MUP
+    INTEGER	: numberOfParameters_
+    			: this is the number of data values
+			  recorded for this MUP
+
+
+
+PARAMETER INFORMATION
+-=-=-=-=-=-=-=-=-=-=-
+After the header there is a list of numberOfTrains_ lines,
+where each line contains data for a given PARAMETER.
+
+
+A PARAMETER line consists of:
+    numberOfParameters_ FLOAT values for each parameter
+    		in the PARAMETER TYPE LIST:
+		    MicroVPkPk
+		    MicroDuration
+		    MicroPhases
+		    MicroTurns
+		    MicroAAR
+
+		    MacroVPkPk
+		    MacroArea
+		    MacroNegPkAmp
+		    MacroNegPkArea
+		    MacroNegPkDur
+
+		    IPImean
+		    IPIsd
+		    IPIcov
+
+		    FRmean
+		    FRmcd
+
+		    AJiggle
+		    BJiggle
+		    Jiggle
+
+		    CNJitter
+		    Blocking
+		    FibreCount
+		    IDRate
+		    NumMuaps
+		    MMuV
+
+		    PeakToPeakAmpMUNE
+		    NegPeakAmpMUNE
+		    NegPeakAreaMUNE
+    after the typed parameters, there are
+
+
+

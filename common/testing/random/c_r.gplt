@@ -1,0 +1,2 @@
+plot "circle_points.txt" using 0:3 with points
+pause -1

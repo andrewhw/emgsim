@@ -1,0 +1,7 @@
+#!/bin/sh
+
+for name in test*.cpp
+do
+    echo Running $name
+    sh ../runTestCase.sh $name > ${name}.output
+done

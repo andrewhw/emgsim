@@ -1,0 +1,11 @@
+#!/bin/sh
+
+FLAGS=""
+
+HOSTNAME=`hostname`
+if [ `expr ${HOSTNAME} : tinass.*` -gt 1 ]
+then
+	FLAGS=${FLAGS}"-static"
+fi
+
+echo ${FLAGS}

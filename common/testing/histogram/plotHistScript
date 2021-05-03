@@ -1,0 +1,261 @@
+#!/bin/sh
+#
+# Gnuplot standard file header created on:
+#	Tue May 22 15:06:54 2012
+#
+#
+ID=''
+COLOUR="monochrome"
+
+TAG=""
+COLOUR="monochrome"
+
+OUTPUT_TYPE="X"
+FONT="Helvetica"
+FONTSIZE=""
+
+SUBTITLE=""
+
+# plot to a local file 
+TMPDIR="tmp"
+TMP_PLOT="${TMPDIR}/gplot$$"
+
+VIEW_PIT="60"
+VIEW_YAW="30"
+VIEW_ZOOM="1"
+
+XMIN="*"
+XMAX="*"
+YMIN="*"
+YMAX="*"
+ZMIN="*"
+ZMAX="*"
+
+GAMMA="2.2"
+CONTOUR="base"
+MAP="NO"
+LIST="NO"
+
+## mark flags for output type
+for opt in "$@"
+do
+	case "${opt}" in
+		-ps*)	OUTPUT_TYPE="PS"
+			;;
+		-eps*)	OUTPUT_TYPE="EPS"
+			;;
+		-pdf*)	OUTPUT_TYPE="PDF"
+			;;
+		-gif*)	OUTPUT_TYPE="GIF"
+			;;
+		-png*)	OUTPUT_TYPE="PNG"
+			;;
+		-pbm*)	OUTPUT_TYPE="PBM"
+			;;
+		-latex*)	OUTPUT_TYPE="LATEX"
+			;;
+		-jpg*)		OUTPUT_TYPE="JPG"
+			;;
+		-jpeg*)		OUTPUT_TYPE="JPG"
+			;;
+		-colour*)	COLOUR="color"
+			;;
+		-mono*)		COLOUR="monochrome"
+			;;
+		-map*)		MAP="YES"
+			;;
+		-gamma=*)		GAMMA=`echo ${opt}| sed -e 's/^-gamma=//'`
+			;;
+		-contour=*)		CONTOUR=`echo ${opt}| sed -e 's/^-contour=//'`
+			;;
+		-subtitle=*)		VALUE=`echo ${opt}| sed -e 's/^-title=//'`
+			SUBTITLE="\n(${VALUE})"
+			;;
+		-font=*)		FONT=`echo ${opt}| sed -e 's/^-font=//'`
+			;;
+		-fsize=*)		FONTSIZE=`echo ${opt}| sed -e 's/^-fsize=//'`
+			;;
+		-subtitle=*)  VALUE=`echo ${opt}| sed -e 's/^-subtitle=//'`
+			SUBTITLE="\n(${VALUE})"
+			;;
+		-tag=*)  TAG=`echo ${opt}| sed -e 's/^-tag=//'`
+			;;
+		-v[0-9]*) 
+			VIEW_PIT=`echo ${opt} | sed -e's/-v//' -e's/,.*//'`
+			VIEW_YAW=`echo ${opt} | sed -e's/-v//' -e's/[^,]*,//' -e's/,[^,]*//'`
+			VIEW_ZOOM=`echo ${opt}| sed -e's/-v//' -e's/.*,//'`
+			;;
+
+		-x[0-9]*) 
+			XMIN=`echo ${opt} | sed -e 's/-x//' -e 's/:.*//'`
+			XMAX=`echo ${opt} | sed -e 's/-x//' -e 's/.*://'`
+			case X"${XMIN}" in
+				X[Oo][Pp][Ee][Nn]*)
+				XMIN="*"
+				;;
+			esac
+			case X"${XMAX}" in
+				X[Oo][Pp][Ee][Nn]*)
+				XMAX="*"
+				;;
+			esac
+			;;
+		-y*) 
+			YMIN=`echo ${opt} | sed -e 's/-y//' -e 's/:.*//'`
+			YMAX=`echo ${opt} | sed -e 's/-y//' -e 's/.*://'`
+			case X"${YMIN}" in
+				X[Oo][Pp][Ee][Nn]*)
+				YMIN="*"
+				;;
+			esac
+			case X"${YMAX}" in
+				X[Oo][Pp][Ee][Nn]*)
+				YMAX="*"
+				;;
+			esac
+			;;
+		-z*) 
+			ZMIN=`echo ${opt} | sed -e 's/-z//' -e 's/:.*//'`
+			ZMAX=`echo ${opt} | sed -e 's/-z//' -e 's/.*://'`
+			case X"${ZMIN}" in
+				X[Oo][Pp][Ee][Nn]*)
+				ZMIN="*"
+				;;
+			esac
+			case X"${ZMAX}" in
+				X[Oo][Pp][Ee][Nn]*)
+				ZMAX="*"
+				;;
+			esac
+			;;
+		-list*)  LIST="YES"
+			;;
+		*)	echo "Unknown option ${opt} - ignoring"
+			;;
+	esac
+done
+
+
+# ensure sane defaults
+if [ X"${XMIN}" = X ] ; then XMIN="*" ; fi
+if [ X"${XMAX}" = X ] ; then XMAX="*" ; fi
+if [ X"${YMIN}" = X ] ; then YMIN="0" ; fi
+if [ X"${YMAX}" = X ] ; then YMAX="*" ; fi
+if [ X"${ZMIN}" = X ] ; then ZMIN="0" ; fi
+if [ X"${ZMAX}" = X ] ; then ZMAX="*" ; fi
+
+
+## Change to the script directory
+SCRIPTDIR=`dirname $0`
+cd ${SCRIPTDIR}
+if [ ! -d "${TMPDIR}" ]
+then
+	mkdir "${TMPDIR}"
+fi
+trap "rm -rf ${TMP_PLOT}" 0 2 3 15
+
+
+
+case "${OUTPUT_TYPE}" in
+PS*)
+	cat >> ${TMP_PLOT} << __EOF__
+	set terminal postscript landscape enhanced ${COLOUR} ${FONTSIZE}
+	set output "plotHist.output${ID}.ps"
+__EOF__
+	output="plotHist.output${ID}.ps"
+	;;
+PDF*)
+	cat >> ${TMP_PLOT} << __EOF__
+	set terminal postscript landscape enhanced ${COLOUR} ${FONTSIZE}
+	set output "plotHist.output${ID}.ps"
+__EOF__
+	output="plotHist.output${ID}.ps"
+	;;
+EPS*)
+	cat >> ${TMP_PLOT} << __EOF__
+	set terminal postscript eps enhanced ${COLOUR} ${FONTSIZE}
+	set output "plotHist.output${ID}.eps"
+__EOF__
+	output="plotHist.output${ID}.eps"
+	;;
+GIF*)
+	cat >> ${TMP_PLOT} << __EOF__
+	set terminal gif small size 1024,768
+	set output "plotHist.output${ID}.gif"
+__EOF__
+	output="plotHist.output${ID}.gif"
+	;;
+PNG*)
+	cat >> ${TMP_PLOT} << __EOF__
+	set terminal png small ${COLOUR}
+	set output "plotHist.output${ID}.png"
+__EOF__
+	output="plotHist.output${ID}.png"
+	;;
+PBM*)
+	cat >> ${TMP_PLOT} << __EOF__
+	set terminal pbm small ${COLOUR}
+	set output "plotHist.output${ID}.pbm"
+__EOF__
+	output="plotHist.output${ID}.pbm"
+	;;
+JPG*)
+	cat >> ${TMP_PLOT} << __EOF__
+	set terminal jpeg small
+	set output "plotHist.output${ID}.jpg"
+__EOF__
+	output="plotHist.output${ID}.jpg"
+	;;
+LATEX*)
+	cat >> ${TMP_PLOT} << __EOF__
+	set terminal latex
+	set output "plotHist.output${ID}.tex"
+__EOF__
+	output="plotHist.output${ID}.tex"
+	;;
+esac
+
+## -- end of standard header --
+
+cat >> ${TMP_PLOT} << __EOF__
+	set title "Test Histogram${SUBTITLE}" font "${FONT}"
+	set xlabel "Value" font "${FONT}"
+	set ylabel "Count" font "${FONT}"
+__EOF__
+# end of header
+
+cat >> ${TMP_PLOT} << __EOF__
+	plot \
+	"plotdata/data.txt" t "data" with boxes, \
+	"plotdata/data.txt.mean" t "data Mean" with lines lw 4
+__EOF__
+# end of body
+
+
+if [ X"${OUTPUT_TYPE}" = X"X" ]
+then
+	cat >> ${TMP_PLOT} << __EOF__
+	pause -1
+__EOF__
+else
+	echo " . Plotting data to ${output}"
+fi
+
+
+gnuplot ${TMP_PLOT}
+
+
+## convert ps file to pdf if indicated
+case "${OUTPUT_TYPE}" in
+PDF*)
+	ps2pdf "${output}"
+	;;
+*)
+	;;
+esac
+
+if [ X"${LIST}" = X"YES" ]
+then
+	cat ${TMP_PLOT}
+fi
+

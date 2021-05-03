@@ -1,7 +1,7 @@
 ##	------------------------------------------------------------
 ##	Makefile for emg-tools directory
 ##	------------------------------------------------------------
-##	$Id: Makefile 49 2013-07-17 15:08:53Z andrew $
+##	$Id: Makefile 58 2021-05-03 17:41:42Z andrew $
 
 INCLUDEFLAGS	=	-I./include -I../common/include
 LIBDIR		=	./lib

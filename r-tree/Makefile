@@ -1,7 +1,7 @@
 ##
 ## Makefile for R-Tree library
 ##
-## $Id: Makefile 13 2012-05-25 17:15:32Z andrew $
+## $Id: Makefile 16 2021-05-03 17:41:43Z andrew $
 
 INCLUDEDIR	=	./include
 LIBDIR		=	./lib
